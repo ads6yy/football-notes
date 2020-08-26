@@ -1,0 +1,54 @@
+<header class='navbar-expand-lg d-flex flex-column align-items-center py-3'>
+  <a href='http://local-adsyfootballnotes.com/' class='logo my-2'>
+    <img src='/themes/custom/footballnotes/img/logo_adsy.png' class='img-fluid rounded-circle'>
+  </a>
+  <div class='names d-flex flex-column px-5 flex-grow-1 align-items-center'>
+    <h1 class='font-weight-bold px-3 m-0'>{{ 'Adsy' }}</h1>
+    <h2 class='font-weight-light px-3 m-0'>{{ 'football notes' }}</h2>
+  </div>
+  {{ page.header }}
+  {% if page.nav_branding or page.nav_main or page.nav_additional %}
+    <nav class='{{ nav_classes }}'>
+      <div class='{{ b4_top_container }}'>region.html.twig
+        <div class='navbar-brand'>
+          {{ page.nav_branding }}
+        </div>
+        <button class='navbar-toggler' type='button' data-toggle='collapse'
+                data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent'
+                aria-expanded='false' aria-label='Toggle navigation'>
+          <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+          <div class='navbar-nav d-flex mr-auto'>
+            {{ page.nav_main }}
+          </div>
+          {{ page.nav_additional }}
+        </div>
+      </div>
+    </nav>
+  {% endif %}
+</header>
+
+<main role='main' class='{% block page_class %}{% endblock %}'>
+  {{ page.breadcrumb }}
+  {% block before_content %}{% endblock %}
+  {{ page.content }}
+  {% block after_content %}{% endblock %}
+  {% if page.sidebar_first %}
+    <aside class='layout-sidebar-first' role='complementary'>
+      {{ page.sidebar_first }}
+    </aside>
+  {% endif %}
+
+  {% if page.sidebar_second %}
+    <aside class='layout-sidebar-second' role='complementary'>
+      {{ page.sidebar_second }}
+    </aside>
+  {% endif %}
+</main>
+
+{% if page.footer %}
+  <footer class='mt-auto px-0 {{ footer_classes }}'>
+    {{ page.footer }}
+  </footer>
+{% endif %}

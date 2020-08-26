@@ -1,0 +1,13 @@
+global-styling:
+  css:
+    theme:
+      //stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css: { type: external, minified: true }
+      css/style.css: {}
+
+global-scripts:
+  version: 1.x
+  js:
+    js/main.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

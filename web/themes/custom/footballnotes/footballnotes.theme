@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * footballnotes theme file.
+ */
+
+function footballnotes_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
+  }
+}
+
+function footballnotes_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  $suggestions[] = sprintf('form__%s', $variables['element']['#form_id']);
+}
+
+function footballnotes_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#array_parents'][0])) {
+    $suggestions[] = 'form_element__' . $variables['element']['#array_parents'][0];
+  }
+}
+
+function footballnotes_theme_suggestions_form_element_label_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#id'])) {
+    $suggestions[] = 'form_element_label__' . $variables['element']['#id'];
+  }
+}
+
+function footballnotes_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  if (isset($variables['element']['#id'])) {
+    $suggestions[] = 'input__' . $variables['element']['#id'];
+  }
+  if (isset($variables['element']['#array_parents'][0])) {
+    $suggestions[] = 'input__' . $variables['element']['#array_parents'][0];
+  }
+  if (isset($element['#attributes']['data-twig-suggestion'])) {
+    $suggestion_suffix = str_replace(['-'], '_', $element['#attributes']['data-twig-suggestion']);
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $suggestion_suffix;
+  }
+}
+
+function footballnotes_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
+  $element = $variables['element'];
+
+  if (isset($element['#type']) && $element['#type'] != 'container') {
+    $suggestions[] = 'container__' . $element['#type'];
+  }
+
+  if (isset($element['#type']) && $element['#type'] == 'container' && isset($element['children
+']['#type'])) {
+    $suggestions[] = 'container__' . $element['children']['#type'];
+  }
+
+  if (isset($element['#type']) && $element['#type'] == 'view') {
+    $suggestions[] = 'container__view__' . $element['#name'];
+    $suggestions[] = 'container__view__' . $element['#name'] . '__' . $element['#display_id'];
+  }
+}
