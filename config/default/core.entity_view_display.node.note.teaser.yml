@@ -1,0 +1,35 @@
+uuid: ba7a55de-ffac-4aa0-8b96-13dae4d71769
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.note.field_championnat
+    - field.field.node.note.field_contenu
+    - field.field.node.note.field_date_du_match
+    - field.field.node.note.field_equipe_a_domicile
+    - field.field.node.note.field_equipe_a_exterieur
+    - field.field.node.note.field_images
+    - field.field.node.note.field_saison
+    - node.type.note
+  module:
+    - user
+id: node.note.teaser
+targetEntityType: node
+bundle: note
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_championnat: true
+  field_contenu: true
+  field_date_du_match: true
+  field_equipe_a_domicile: true
+  field_equipe_a_exterieur: true
+  field_images: true
+  field_saison: true
+  langcode: true

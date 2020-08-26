@@ -1,0 +1,29 @@
+uuid: 2842222c-8e49-45cd-a20b-0b53c2f6414c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_equipe_a_exterieur
+    - node.type.note
+    - taxonomy.vocabulary.equipe
+id: node.note.field_equipe_a_exterieur
+field_name: field_equipe_a_exterieur
+entity_type: node
+bundle: note
+label: 'Equipe à l''extérieur'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      equipe: equipe
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

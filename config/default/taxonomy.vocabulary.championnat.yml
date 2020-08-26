@@ -1,0 +1,8 @@
+uuid: ec08348d-fa46-4cbe-a5d1-7d33d9e6aedd
+langcode: fr
+status: true
+dependencies: {  }
+name: Championnat
+vid: championnat
+description: ''
+weight: 0

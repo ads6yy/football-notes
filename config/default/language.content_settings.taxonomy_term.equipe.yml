@@ -1,0 +1,11 @@
+uuid: 6642ff59-df39-45ba-a46d-f2dbb34fb160
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.equipe
+id: taxonomy_term.equipe
+target_entity_type_id: taxonomy_term
+target_bundle: equipe
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,86 @@
+uuid: d1a044be-2cd7-4375-aa46-fcc7521fbe2d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.note.field_championnat
+    - field.field.node.note.field_contenu
+    - field.field.node.note.field_date_du_match
+    - field.field.node.note.field_equipe_a_domicile
+    - field.field.node.note.field_equipe_a_exterieur
+    - field.field.node.note.field_images
+    - field.field.node.note.field_saison
+    - node.type.note
+  module:
+    - datetime
+    - text
+    - user
+id: node.note.default
+targetEntityType: node
+bundle: note
+mode: default
+content:
+  field_championnat:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_contenu:
+    weight: 107
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_date_du_match:
+    weight: 105
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_equipe_a_domicile:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_equipe_a_exterieur:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_images:
+    type: entity_reference_entity_view
+    weight: 108
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_saison:
+    weight: 101
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

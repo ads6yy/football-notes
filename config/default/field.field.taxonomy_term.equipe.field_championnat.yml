@@ -1,0 +1,29 @@
+uuid: b82ec99b-26a0-4374-bd6f-47380369f366
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_championnat
+    - taxonomy.vocabulary.championnat
+    - taxonomy.vocabulary.equipe
+id: taxonomy_term.equipe.field_championnat
+field_name: field_championnat
+entity_type: taxonomy_term
+bundle: equipe
+label: Championnat
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      championnat: championnat
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

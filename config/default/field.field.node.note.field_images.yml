@@ -1,0 +1,28 @@
+uuid: c1d6470b-d7ab-424b-8559-4513154906dd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_images
+    - media.type.image
+    - node.type.note
+id: node.note.field_images
+field_name: field_images
+entity_type: node
+bundle: note
+label: Images
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

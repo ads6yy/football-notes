@@ -1,0 +1,29 @@
+uuid: 0e3622bb-b203-4e3f-8701-838702556e73
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_equipe_a_domicile
+    - node.type.note
+    - taxonomy.vocabulary.equipe
+id: node.note.field_equipe_a_domicile
+field_name: field_equipe_a_domicile
+entity_type: node
+bundle: note
+label: 'Equipe à domicile'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      equipe: equipe
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

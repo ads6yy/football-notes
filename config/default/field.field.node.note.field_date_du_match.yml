@@ -1,0 +1,21 @@
+uuid: d6b1225e-66b4-49f5-8329-012edcb77922
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_du_match
+    - node.type.note
+  module:
+    - datetime
+id: node.note.field_date_du_match
+field_name: field_date_du_match
+entity_type: node
+bundle: note
+label: 'Date du match'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

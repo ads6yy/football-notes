@@ -1,0 +1,8 @@
+uuid: 4b742469-7f20-46b1-983c-ee88a91bfa86
+langcode: fr
+status: true
+dependencies: {  }
+name: Equipe
+vid: equipe
+description: ''
+weight: 0

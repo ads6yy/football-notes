@@ -1,0 +1,29 @@
+uuid: eba17fe4-8cb3-433a-a84c-48673fe65f9b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_championnat
+    - node.type.note
+    - taxonomy.vocabulary.championnat
+id: node.note.field_championnat
+field_name: field_championnat
+entity_type: node
+bundle: note
+label: Championnat
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      championnat: championnat
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,31 @@
+uuid: 4faca42f-ae48-4909-8664-4881bbe36db0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.equipe.field_championnat
+    - taxonomy.vocabulary.equipe
+  module:
+    - text
+id: taxonomy_term.equipe.default
+targetEntityType: taxonomy_term
+bundle: equipe
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_championnat:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  langcode: true

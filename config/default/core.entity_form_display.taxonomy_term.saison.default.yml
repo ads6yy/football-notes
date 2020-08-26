@@ -1,0 +1,24 @@
+uuid: df70c682-9b8f-4b08-97e9-4f04e27590e3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.saison
+id: taxonomy_term.saison.default
+targetEntityType: taxonomy_term
+bundle: saison
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

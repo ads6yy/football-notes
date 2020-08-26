@@ -1,0 +1,11 @@
+uuid: 9aca7d6b-5d0a-47a8-bee4-0e15148ca0d8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.championnat
+id: taxonomy_term.championnat
+target_entity_type_id: taxonomy_term
+target_bundle: championnat
+default_langcode: site_default
+language_alterable: false

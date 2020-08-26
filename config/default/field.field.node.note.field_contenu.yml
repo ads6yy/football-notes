@@ -1,0 +1,21 @@
+uuid: e642c236-b016-4244-8337-ccdc555b56b0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contenu
+    - node.type.note
+  module:
+    - text
+id: node.note.field_contenu
+field_name: field_contenu
+entity_type: node
+bundle: note
+label: Contenu
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
