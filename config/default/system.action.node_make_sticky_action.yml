@@ -1,0 +1,13 @@
+uuid: 68111ea3-2af8-4a82-906e-2e4bf3d7e8c1
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: sOb26JSy3fGpWkvR0WYN6_hMqj_6d1rvbvrkzp1yya0
+id: node_make_sticky_action
+label: 'Épingler un contenu en haut des listes'
+type: node
+plugin: node_make_sticky_action
+configuration: {  }

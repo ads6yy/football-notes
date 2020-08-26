@@ -1,0 +1,14 @@
+uuid: dc5306a2-7e68-4a04-afca-69c556e8aef9
+name: local-adsyfootballnotes.com
+mail: adsysama@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: fr
+default_langcode: fr
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE

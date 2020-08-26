@@ -1,0 +1,10 @@
+uuid: 2ee47646-8082-4246-96e1-0988182c6963
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.token
+label: 'Jeton (token)'
+targetEntityType: paragraph
+cache: true

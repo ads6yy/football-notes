@@ -1,0 +1,22 @@
+uuid: 1f066b6f-00cb-41ea-a2c3-d647cb241d53
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - footballnotes
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: footballnotes_content
+theme: footballnotes
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Contenu de la page principale'
+  provider: system
+  label_display: '0'
+visibility: {  }
