@@ -13,12 +13,18 @@ header {
 .simple-grey {
   color: $simple-grey !important;
 }
+.background-simple-grey {
+  background-color: $simple-grey !important;
+}
 .border-simple-grey {
   border-color: $simple-grey !important;
 }
 
 .dark-grey {
   color: $dark-grey !important;
+}
+.background-dark-grey {
+  background-color: $dark-grey !important;
 }
 .border-dark-grey {
   border-color: $dark-grey !important;
@@ -27,12 +33,18 @@ header {
 .red {
   color: $red !important;
 }
+.background-red {
+  background-color: $red !important;
+}
 .border-red {
   border-color: $red !important;
 }
 
 .off-white {
   color: $off-white !important;
+}
+.background-off-white {
+  background-color: $off-white !important;
 }
 .border-off-white {
   border-color: $off-white !important;

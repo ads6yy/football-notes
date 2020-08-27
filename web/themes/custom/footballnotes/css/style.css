@@ -14,12 +14,20 @@ header {
   color: #E6E6E6 !important;
 }
 
+.background-simple-grey {
+  background-color: #E6E6E6 !important;
+}
+
 .border-simple-grey {
   border-color: #E6E6E6 !important;
 }
 
 .dark-grey {
   color: #4A4A4A !important;
+}
+
+.background-dark-grey {
+  background-color: #4A4A4A !important;
 }
 
 .border-dark-grey {
@@ -30,12 +38,20 @@ header {
   color: #D0021B !important;
 }
 
+.background-red {
+  background-color: #D0021B !important;
+}
+
 .border-red {
   border-color: #D0021B !important;
 }
 
 .off-white {
   color: #F7F7F9 !important;
+}
+
+.background-off-white {
+  background-color: #F7F7F9 !important;
 }
 
 .border-off-white {
