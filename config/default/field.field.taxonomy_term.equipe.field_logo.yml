@@ -1,19 +1,19 @@
-uuid: c1d6470b-d7ab-424b-8559-4513154906dd
+uuid: 59f15976-9782-4b9b-9056-8e8d51ff6dc2
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.storage.node.field_images
+    - field.storage.taxonomy_term.field_logo
     - media.type.image
-    - node.type.note
-id: node.note.field_images
-field_name: field_images
-entity_type: node
-bundle: note
-label: Images
+    - taxonomy.vocabulary.equipe
+id: taxonomy_term.equipe.field_logo
+field_name: field_logo
+entity_type: taxonomy_term
+bundle: equipe
+label: Logo
 description: ''
-required: false
-translatable: false
+required: true
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

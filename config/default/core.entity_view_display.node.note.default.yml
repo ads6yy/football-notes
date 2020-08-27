@@ -22,48 +22,48 @@ mode: default
 content:
   field_championnat:
     weight: 102
-    label: above
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_contenu:
     weight: 107
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_date_du_match:
     weight: 105
-    label: above
+    label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      date_format: 'd/m/Y - H:i'
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_custom
     region: content
   field_equipe_a_domicile:
     weight: 103
-    label: above
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_equipe_a_exterieur:
     weight: 104
-    label: above
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_images:
     type: entity_reference_entity_view
     weight: 108
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: false
@@ -71,16 +71,16 @@ content:
     region: content
   field_saison:
     weight: 101
-    label: above
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   links:
     weight: 100
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   langcode: true

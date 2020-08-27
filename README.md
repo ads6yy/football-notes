@@ -19,3 +19,11 @@
 - Remove Drupal module : ``composer remove drupal/module_name``
 - Install Drupal module : ``vendor/bin/drush en module_name``
 - Uninstall Drupal module : ``vendor/bin/drush pmu module_name``
+
+
+#### Utilisez le thème et build le css avec SASS
+
+Dans le dossier thème
+- ``npm install``
+- ``npm install -g sass``
+- build le css : ``sass ./web/themes/custom/footballnotes/scss/style.scss ./web/themes/custom/footballnotes/css/style.css``

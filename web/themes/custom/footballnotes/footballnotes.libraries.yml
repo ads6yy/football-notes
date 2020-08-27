@@ -1,6 +1,7 @@
 global-styling:
   css:
     theme:
+      //fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap: { type: external }
       //stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css: { type: external, minified: true }
       css/style.css: {}
 

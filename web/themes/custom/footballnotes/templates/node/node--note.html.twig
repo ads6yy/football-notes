@@ -1,0 +1,18 @@
+<div class='note container d-flex flex-column'>
+  <div class='d-flex flex-row align-items-center mt-3 mb-1'>
+    <h4 class='saison m-0 mr-2'>{{- content.field_championnat -}}</h4>
+    <span> {{ ' - ' }} </span>
+    <span class='date ml-2 font-weight-light red'>{{- content.field_date_du_match -}}</span>
+  </div>
+  <div class='score d-flex flex-row my-3 font-weight-bold'>
+    <h2 class='domicile'>{{ content.field_equipe_a_domicile }} - {{ content.field_equipe_a_exterieur }}</h2>
+  </div>
+  <div class='contenu d-flex flex-column border border-red p-3 mb-3 mt-1'>
+    {{ content.field_contenu }}
+    {% if content.field_images.0 %}
+      <div class='images'>
+        {{ content.field_images }}
+      </div>
+    {% endif %}
+  </div>
+</div>

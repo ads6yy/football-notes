@@ -1,7 +1,39 @@
 body {
-
+  font-family: 'Raleway', sans-serif;
+  color: $dark-grey;
+  background-color: $off-white;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
 header {
   background-color: $simple-grey;
+}
+
+.simple-grey {
+  color: $simple-grey !important;
+}
+.border-simple-grey {
+  border-color: $simple-grey !important;
+}
+
+.dark-grey {
+  color: $dark-grey !important;
+}
+.border-dark-grey {
+  border-color: $dark-grey !important;
+}
+
+.red {
+  color: $red !important;
+}
+.border-red {
+  border-color: $red !important;
+}
+
+.off-white {
+  color: $off-white !important;
+}
+.border-off-white {
+  border-color: $off-white !important;
 }

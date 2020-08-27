@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.taxonomy_term.equipe.field_championnat
+    - field.field.taxonomy_term.equipe.field_logo
     - taxonomy.vocabulary.equipe
 id: taxonomy_term.equipe.default
 targetEntityType: taxonomy_term
@@ -15,6 +16,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
+  field_logo:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   name:
     type: string_textfield

@@ -1,5 +1,45 @@
+body {
+  font-family: "Raleway", sans-serif;
+  color: #4A4A4A;
+  background-color: #F7F7F9;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
 header {
   background-color: #E6E6E6;
+}
+
+.simple-grey {
+  color: #E6E6E6 !important;
+}
+
+.border-simple-grey {
+  border-color: #E6E6E6 !important;
+}
+
+.dark-grey {
+  color: #4A4A4A !important;
+}
+
+.border-dark-grey {
+  border-color: #4A4A4A !important;
+}
+
+.red {
+  color: #D0021B !important;
+}
+
+.border-red {
+  border-color: #D0021B !important;
+}
+
+.off-white {
+  color: #F7F7F9 !important;
+}
+
+.border-off-white {
+  border-color: #F7F7F9 !important;
 }
 
 /*# sourceMappingURL=style.css.map */
