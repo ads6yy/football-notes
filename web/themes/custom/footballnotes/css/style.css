@@ -58,4 +58,18 @@ header {
   border-color: #F7F7F9 !important;
 }
 
+/* Hub notes */
+.notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -15% 0 -16%;
+}
+
+/* CSS note teaser */
+.note-teaser {
+  width: 35%;
+  border: 1px solid #4A4A4A;
+}
+
 /*# sourceMappingURL=style.css.map */

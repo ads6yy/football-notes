@@ -1,0 +1,22 @@
+uuid: 809c9639-6553-44ca-a9e0-e5f65891f36c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: pattern_note
+label: 'Pattern note'
+type: 'canonical_entities:node'
+pattern: '/[node:field_championnat]/[node:field_saison]/[node:field_equipe_a_domicile]-[node:field_equipe_a_exterieur]'
+selection_criteria:
+  2b142713-b325-48a1-8edb-f81283c3fb90:
+    id: node_type
+    bundles:
+      note: note
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 2b142713-b325-48a1-8edb-f81283c3fb90
+selection_logic: and
+weight: -5
+relationships: {  }

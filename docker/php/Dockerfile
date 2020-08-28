@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -y --fix-missing \
     graphviz \
     git \
     libpng-dev \
+    libfreetype6-dev \
+    libwebp-dev \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
     libxml2-dev \
@@ -20,10 +22,15 @@ RUN apt-get update && apt-get install -y --fix-missing \
     libssl-dev && \
     rm -r /var/lib/apt/lists/*
 
-RUN docker-php-ext-install \
+RUN adduser --disabled-password --gecos '' admin
+RUN adduser admin sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install \
+    gd \
     mysqli \
     pdo_mysql \
-    gd \
     xsl \
     opcache \
     calendar \
@@ -32,6 +39,8 @@ RUN docker-php-ext-install \
     ftp \
     bcmath \
     zip
+
+RUN sudo docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -42,10 +51,6 @@ RUN apt-get install -y curl \
   && curl -sL https://deb.nodesource.com/setup_9.x | bash - \
   && apt-get install -y nodejs \
   && curl -L https://www.npmjs.com/install.sh | sh
-
-RUN adduser --disabled-password --gecos '' admin
-RUN adduser admin sudo
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER admin
 WORKDIR /var/www/html
