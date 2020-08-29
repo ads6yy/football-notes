@@ -69,4 +69,31 @@ function footballnotes_preprocess_node__note__teaser(&$variables) {
   $mediaChampionnat = $termChampionnat->get('field_logo')->referencedEntities()[0];
   $fileUrlChampionnat = $mediaChampionnat->field_media_image->referencedEntities()[0]->getFileUri();
   $variables['img_championnat'] = file_create_url($fileUrlChampionnat);
+
+  $fieldEquipeAdomicile = $element['field_equipe_a_domicile'];
+  $termEquipeAdomicile = $fieldEquipeAdomicile['#items']->referencedEntities()[0];
+  $mediaEquipeAdomicile = $termEquipeAdomicile->get('field_logo')->referencedEntities()[0];
+  $fileUrlEquipeAdomicile = $mediaEquipeAdomicile->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_equipe_a_domicile'] = file_create_url($fileUrlEquipeAdomicile);
+
+  $fieldEquipeAExterieur = $element['field_equipe_a_exterieur'];
+  $termEquipeAExterieur = $fieldEquipeAExterieur['#items']->referencedEntities()[0];
+  $mediaEquipeAExterieur = $termEquipeAExterieur->get('field_logo')->referencedEntities()[0];
+  $fileUrlEquipeAExterieur = $mediaEquipeAExterieur->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_equipe_a_exterieur'] = file_create_url($fileUrlEquipeAExterieur);
+}
+
+function footballnotes_preprocess_node__note__full(&$variables) {
+  $element = $variables['elements'];
+  $fieldEquipeAdomicile = $element['field_equipe_a_domicile'];
+  $termEquipeAdomicile = $fieldEquipeAdomicile['#items']->referencedEntities()[0];
+  $mediaEquipeAdomicile = $termEquipeAdomicile->get('field_logo')->referencedEntities()[0];
+  $fileUrlEquipeAdomicile = $mediaEquipeAdomicile->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_equipe_a_domicile'] = file_create_url($fileUrlEquipeAdomicile);
+
+  $fieldEquipeAExterieur = $element['field_equipe_a_exterieur'];
+  $termEquipeAExterieur = $fieldEquipeAExterieur['#items']->referencedEntities()[0];
+  $mediaEquipeAExterieur = $termEquipeAExterieur->get('field_logo')->referencedEntities()[0];
+  $fileUrlEquipeAExterieur = $mediaEquipeAExterieur->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_equipe_a_exterieur'] = file_create_url($fileUrlEquipeAExterieur);
 }

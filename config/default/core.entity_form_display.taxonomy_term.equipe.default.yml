@@ -6,6 +6,8 @@ dependencies:
     - field.field.taxonomy_term.equipe.field_championnat
     - field.field.taxonomy_term.equipe.field_logo
     - taxonomy.vocabulary.equipe
+  module:
+    - media_library
 id: taxonomy_term.equipe.default
 targetEntityType: taxonomy_term
 bundle: equipe
@@ -20,12 +22,9 @@ content:
   field_logo:
     weight: 2
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      media_types: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: media_library_widget
     region: content
   name:
     type: string_textfield

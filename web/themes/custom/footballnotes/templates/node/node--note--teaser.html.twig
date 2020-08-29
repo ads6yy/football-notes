@@ -1,10 +1,20 @@
-<div class='note-teaser col-xl-3 my-3 mx-1 p-0'>
+<div class='note-teaser col-xl-3 my-3 mx-3 p-0'>
+  <a href='{{ url }}'>
   <img class='img-fluid' src='{{ img_championnat }}'/>
-  <div class='d-flex flex-column align-items-center my-2 px-3'>
+  <div class='card-match d-flex flex-column align-items-center my-2 px-3'>
     <h4 class='saison m-0'>{{- content.field_championnat -}}</h4>
     <span class='date red'>{{- content.field_date_du_match -}}</span>
-    <div class='score d-flex flex-row my-3 font-weight-bold'>
-      <h2 class='domicile'>{{ content.field_equipe_a_domicile }} - {{ content.field_equipe_a_exterieur }}</h2>
+    <div class='score my-3 font-weight-bold'>
+      <div class='equipe'>
+        <img class='img-fluid' src='{{ img_equipe_a_domicile }}'/>
+        <h5 class='exterieur m-0 px-2'>{{ content.field_equipe_a_domicile }}</h5>
+      </div>
+      <div class='resultat'><h2 class='m-0 font-weight-bold'>{{ content.field_score_equipe_a_domicile }}{{ ' : ' }}{{ content.field_score_equipe_a_l_exterieur }}</h2></div>
+      <div class='equipe'>
+        <img class='img-fluid' src='{{ img_equipe_a_exterieur }}'/>
+        <h5 class='domicile m-0 px-2'>{{ content.field_equipe_a_exterieur }}</h5>
+      </div>
     </div>
   </div>
+  </a>
 </div>

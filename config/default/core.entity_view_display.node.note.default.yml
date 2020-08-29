@@ -10,6 +10,8 @@ dependencies:
     - field.field.node.note.field_equipe_a_exterieur
     - field.field.node.note.field_images
     - field.field.node.note.field_saison
+    - field.field.node.note.field_score_equipe_a_domicile
+    - field.field.node.note.field_score_equipe_a_l_exterieur
     - node.type.note
   module:
     - datetime
@@ -76,6 +78,24 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_score_equipe_a_domicile:
+    weight: 109
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_score_equipe_a_l_exterieur:
+    weight: 110
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
     region: content
   links:
     weight: 100

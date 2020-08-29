@@ -1,0 +1,23 @@
+uuid: 7cdd31af-5a90-4795-964e-2f1130db4afa
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_score_equipe_a_l_exterieur
+    - node.type.note
+id: node.note.field_score_equipe_a_l_exterieur
+field_name: field_score_equipe_a_l_exterieur
+entity_type: node
+bundle: note
+label: 'Score équipe à l''extérieur'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

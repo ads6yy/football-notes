@@ -4,8 +4,20 @@
     <span>{{ ' - ' }}</span>
     <span class='date ml-2 font-weight-light red'>{{- content.field_date_du_match -}}</span>
   </div>
-  <div class='score d-flex flex-row my-3 font-weight-bold'>
-    <h2 class='domicile'>{{ content.field_equipe_a_domicile }} - {{ content.field_equipe_a_exterieur }}</h2>
+  <div class='score my-3 font-weight-bold'>
+    <div class='equipe'>
+      <img class='img-fluid' src='{{ img_equipe_a_domicile }}'/>
+      <h5 class='exterieur m-0 px-2'>{{ content.field_equipe_a_domicile }}</h5>
+    </div>
+    <div class='resultat mx-5'>
+      <h2 class='m-0 font-weight-bold'>
+        {{ content.field_score_equipe_a_domicile }}{{ ' : ' }}{{ content.field_score_equipe_a_l_exterieur }}
+      </h2>
+    </div>
+    <div class='equipe'>
+      <h5 class='domicile m-0 px-2'>{{ content.field_equipe_a_exterieur }}</h5>
+      <img class='img-fluid' src='{{ img_equipe_a_exterieur }}'/>
+    </div>
   </div>
   <div class='contenu d-flex flex-column border border-red p-3 mb-3 mt-1'>
     {{ content.field_contenu }}

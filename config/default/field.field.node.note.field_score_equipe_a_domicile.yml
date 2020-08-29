@@ -1,0 +1,23 @@
+uuid: ee360dd5-4787-4c3f-8321-7ba0092f54fa
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_score_equipe_a_domicile
+    - node.type.note
+id: node.note.field_score_equipe_a_domicile
+field_name: field_score_equipe_a_domicile
+entity_type: node
+bundle: note
+label: 'Score équipe à domicile'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
