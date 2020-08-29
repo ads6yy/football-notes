@@ -1,0 +1,28 @@
+uuid: 1c25ee34-40e5-4a11-b142-5b2377744a58
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.saison_championnat.field_championnat
+    - field.field.paragraph.saison_championnat.field_saison
+    - paragraphs.paragraphs_type.saison_championnat
+id: paragraph.saison_championnat.default
+targetEntityType: paragraph
+bundle: saison_championnat
+mode: default
+content:
+  field_championnat:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_saison:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,15 +1,15 @@
-uuid: b82ec99b-26a0-4374-bd6f-47380369f366
+uuid: c836be1f-be1a-42d4-9404-1baf5e5db5ec
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.storage.taxonomy_term.field_championnat
+    - field.storage.paragraph.field_championnat
+    - paragraphs.paragraphs_type.saison_championnat
     - taxonomy.vocabulary.championnat
-    - taxonomy.vocabulary.equipe
-id: taxonomy_term.equipe.field_championnat
+id: paragraph.saison_championnat.field_championnat
 field_name: field_championnat
-entity_type: taxonomy_term
-bundle: equipe
+entity_type: paragraph
+bundle: saison_championnat
 label: Championnat
 description: ''
 required: true

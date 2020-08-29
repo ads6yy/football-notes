@@ -1,0 +1,29 @@
+uuid: 9c83bbfb-dd05-4d9d-82a3-b941257b237d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_saison
+    - paragraphs.paragraphs_type.saison_championnat
+    - taxonomy.vocabulary.saison
+id: paragraph.saison_championnat.field_saison
+field_name: field_saison
+entity_type: paragraph
+bundle: saison_championnat
+label: Saison
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      saison: saison
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

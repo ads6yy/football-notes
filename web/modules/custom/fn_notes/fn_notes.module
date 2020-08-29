@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for fn_notes module.
+ */
+
+use \Drupal\taxonomy\Entity\Term;
+use \Drupal\Core\Form\FormStateInterface;
+
+
+/* NOEUD */
+function fn_notes_preprocess_node__note__teaser(&$variables) {
+  // Récupération de l'url de l'image du Championnat.
+  $element = $variables['elements'];
+  $fieldChampionnat = $element['field_championnat'];
+  $termChampionnat = $fieldChampionnat['#items']->referencedEntities()[0];
+  $mediaChampionnat = $termChampionnat->get('field_logo')->referencedEntities()[0];
+  $fileUrlChampionnat = $mediaChampionnat->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_championnat'] = file_create_url($fileUrlChampionnat);
+
+  $fieldEquipeAdomicile = $element['field_equipe_a_domicile'];
+  $termEquipeAdomicile = $fieldEquipeAdomicile['#items']->referencedEntities()[0];
+  $mediaEquipeAdomicile = $termEquipeAdomicile->get('field_logo')->referencedEntities()[0];
+  $fileUrlEquipeAdomicile = $mediaEquipeAdomicile->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_equipe_a_domicile'] = file_create_url($fileUrlEquipeAdomicile);
+
+  $fieldEquipeAExterieur = $element['field_equipe_a_exterieur'];
+  $termEquipeAExterieur = $fieldEquipeAExterieur['#items']->referencedEntities()[0];
+  $mediaEquipeAExterieur = $termEquipeAExterieur->get('field_logo')->referencedEntities()[0];
+  $fileUrlEquipeAExterieur = $mediaEquipeAExterieur->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_equipe_a_exterieur'] = file_create_url($fileUrlEquipeAExterieur);
+}
+
+function fn_notes_preprocess_node__note__full(&$variables) {
+  $element = $variables['elements'];
+  $fieldEquipeAdomicile = $element['field_equipe_a_domicile'];
+  $termEquipeAdomicile = $fieldEquipeAdomicile['#items']->referencedEntities()[0];
+  $mediaEquipeAdomicile = $termEquipeAdomicile->get('field_logo')->referencedEntities()[0];
+  $fileUrlEquipeAdomicile = $mediaEquipeAdomicile->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_equipe_a_domicile'] = file_create_url($fileUrlEquipeAdomicile);
+
+  $fieldEquipeAExterieur = $element['field_equipe_a_exterieur'];
+  $termEquipeAExterieur = $fieldEquipeAExterieur['#items']->referencedEntities()[0];
+  $mediaEquipeAExterieur = $termEquipeAExterieur->get('field_logo')->referencedEntities()[0];
+  $fileUrlEquipeAExterieur = $mediaEquipeAExterieur->field_media_image->referencedEntities()[0]->getFileUri();
+  $variables['img_equipe_a_exterieur'] = file_create_url($fileUrlEquipeAExterieur);
+}
+
+/* FORMULAIRE */
+function fn_notes_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // On choisit le formulaire exposé de notre vue.
+  if ($form['#id'] === 'views-exposed-form-note-hub') {
+
+    // On récupère les inputs du formulaire.
+    $inputs = $form_state->getUserInput();
+
+    // On créer la requête qui va nous permettre de récupérer
+    // les ID des paragraphes respectants les conditions du formulaire.
+    $queryParagraphs = \Drupal::entityQuery('paragraph')
+      ->condition('type', 'saison_championnat');
+
+    // Ajout condition SAISON.
+    if ($inputs['saison'] !== 'All') {
+      $queryParagraphs->condition('field_saison', $inputs['saison']);
+    }
+
+    // Ajout condition CHAMPIONNAT.
+    if ($inputs['championnat'] !== 'All') {
+      $queryParagraphs->condition('field_championnat', $inputs['championnat']);
+    }
+
+    // On récupère les résultats des paragraphes.
+    $resultatParagraphs = $queryParagraphs->execute();
+
+    // On va maintenant récupèrer les équipes associées à ces paragraphes;
+    // Donc celles qui respectent les conditions du formulaire.
+    $equipesDuChampionnatSelectionne = Drupal::entityQuery('taxonomy_term')
+      ->condition('vid', 'equipe')
+      ->condition('field_saisons_championnats', $resultatParagraphs, 'IN')
+      ->execute();
+
+    // On itère sur les options du select "Equipe".
+    foreach ($form['equipe']['#options'] as $key => $nomEquipe) {
+      if ($key !== 'All') {
+        // Si l'équipe ne fait pas partie du championnat sélectionné
+        // alors on la retire du select.
+        if (!in_array($key, $equipesDuChampionnatSelectionne)) {
+          unset($form['equipe']['#options'][$key]);
+        }
+      }
+    }
+  }
+}
+
+function fn_notes_preprocess_views_exposed_form(&$variables) {
+  if ($variables['form']['#id'] === 'views-exposed-form-note-hub') {
+    $variables['form']['saison']['#attributes']['class'][] = 'selectpicker';
+    $variables['form']['championnat']['#attributes']['class'][] = 'selectpicker';
+    $variables['form']['equipe']['#attributes']['class'][] = 'selectpicker';
+  }
+}

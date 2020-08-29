@@ -1,0 +1,10 @@
+uuid: c95e9a6c-3fc2-4a4a-bf36-5c56c2e019a0
+langcode: fr
+status: true
+dependencies: {  }
+id: saison_championnat
+label: 'Saison + Championnat'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
