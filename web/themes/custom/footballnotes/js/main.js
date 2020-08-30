@@ -1,9 +1,4 @@
-(function ($, Drupal) {
+(function ($, Drupal, drupalSettings) {
 
-  Drupal.behaviors.selectPicker = {
-    attach: function attach(context) {
-      $('.selectpicker').selectpicker();
-    }
-  }
 
-})(jQuery, Drupal);
+})(jQuery, Drupal, drupalSettings);

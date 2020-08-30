@@ -95,8 +95,15 @@ function fn_notes_form_views_exposed_form_alter(&$form, FormStateInterface $form
 
 function fn_notes_preprocess_views_exposed_form(&$variables) {
   if ($variables['form']['#id'] === 'views-exposed-form-note-hub') {
-    $variables['form']['saison']['#attributes']['class'][] = 'selectpicker';
-    $variables['form']['championnat']['#attributes']['class'][] = 'selectpicker';
-    $variables['form']['equipe']['#attributes']['class'][] = 'selectpicker';
+    $variables['form']['saison']['#attributes'] = addSelectPicker($variables['form']['saison']['#attributes']);
+    $variables['form']['championnat']['#attributes'] = addSelectPicker($variables['form']['saison']['#attributes']);
+    $variables['form']['equipe']['#attributes'] = addSelectPicker($variables['form']['saison']['#attributes']);
   }
+}
+
+function addSelectPicker($formField) {
+  $formField['class'][] = 'selectpicker';
+  $formField['data-live-search'] = "TRUE";
+
+  return $formField;
 }

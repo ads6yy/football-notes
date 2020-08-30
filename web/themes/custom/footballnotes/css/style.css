@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font-family: "Raleway", sans-serif;
   color: #4A4A4A;
@@ -56,6 +57,11 @@ header {
 
 .border-off-white {
   border-color: #F7F7F9 !important;
+}
+
+/* Hub notes formulaire exposé */
+#views-exposed-form-note-hub .dropdown > button {
+  background-color: #E6E6E6;
 }
 
 /* Hub notes */
