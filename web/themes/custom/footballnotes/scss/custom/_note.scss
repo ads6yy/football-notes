@@ -11,57 +11,73 @@
   margin: 0 -15% 0 -16%;
 }
 
-.note .score {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
+.note {
+  .score {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
 
-.note .equipe {
-  display: flex;
-  align-items: center;
-  height: 100px;
-}
+  .equipe {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    img {
+      height: 100%;
+    }
+  }
 
-.note .equipe > img {
-  height: 100%;
+  .swiper-container {
+    height: 800px;
+    .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #E6E6E6;
+      img {
+        width: 100%;
+      }
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: $off-white;
+    }
+  }
 }
 
 /* CSS note teaser */
 .note-teaser {
   width: 35%;
   border: 1px solid $dark-grey;
-}
 
-.note-teaser a {
-  color: $dark-grey;
-  text-decoration: none;
-}
+  a {
+    color: $dark-grey;
+    text-decoration: none;
+  }
 
-.note-teaser a:hover {
-  text-decoration: none;
-  color: $red;
-}
+  a:hover {
+    text-decoration: none;
+    color: $red;
+  }
 
-.note-teaser .score {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}
+  .score {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
 
-.note-teaser .equipe {
-  flex-wrap: wrap;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 35%;
-}
-
-.note-teaser .equipe > img {
-  height: 40%;
+  .equipe {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 35%;
+    img {
+      height: 70%;
+    }
+  }
 }

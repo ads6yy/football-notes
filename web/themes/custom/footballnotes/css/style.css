@@ -78,15 +78,28 @@ header {
   align-items: center;
   width: 100%;
 }
-
 .note .equipe {
   display: flex;
   align-items: center;
   height: 100px;
 }
-
-.note .equipe > img {
+.note .equipe img {
   height: 100%;
+}
+.note .swiper-container {
+  height: 800px;
+}
+.note .swiper-container .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #E6E6E6;
+}
+.note .swiper-container .swiper-slide img {
+  width: 100%;
+}
+.note .swiper-container .swiper-button-next, .note .swiper-container .swiper-button-prev {
+  color: #F7F7F9;
 }
 
 /* CSS note teaser */
@@ -94,17 +107,14 @@ header {
   width: 35%;
   border: 1px solid #4A4A4A;
 }
-
 .note-teaser a {
   color: #4A4A4A;
   text-decoration: none;
 }
-
 .note-teaser a:hover {
   text-decoration: none;
   color: #D0021B;
 }
-
 .note-teaser .score {
   display: flex;
   flex-direction: row;
@@ -112,7 +122,6 @@ header {
   align-items: center;
   width: 100%;
 }
-
 .note-teaser .equipe {
   flex-wrap: wrap;
   display: flex;
@@ -122,8 +131,7 @@ header {
   height: 100px;
   width: 35%;
 }
-
-.note-teaser .equipe > img {
+.note-teaser .equipe img {
   height: 40%;
 }
 
