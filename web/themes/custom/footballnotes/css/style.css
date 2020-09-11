@@ -111,6 +111,9 @@ header {
   color: #4A4A4A;
   text-decoration: none;
 }
+.note-teaser a > img {
+  max-height: 205px;
+}
 .note-teaser a:hover {
   text-decoration: none;
   color: #D0021B;
@@ -132,7 +135,7 @@ header {
   width: 35%;
 }
 .note-teaser .equipe img {
-  height: 40%;
+  height: 70%;
 }
 
 /*# sourceMappingURL=style.css.map */

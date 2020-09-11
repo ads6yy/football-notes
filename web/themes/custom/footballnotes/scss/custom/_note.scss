@@ -53,6 +53,9 @@
   a {
     color: $dark-grey;
     text-decoration: none;
+    & > img {
+      max-height: 205px;
+    }
   }
 
   a:hover {
