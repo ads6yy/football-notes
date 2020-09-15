@@ -15,7 +15,10 @@ label: Contenu
 description: ''
 required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: "<p><u><strong>1ère mi-temps&nbsp;</strong><em>(0-0)</em></u></p>\r\n\r\n<ul>\r\n\t<li>&nbsp;</li>\r\n</ul>\r\n\r\n<p><u><strong>2ème mi-temps&nbsp;</strong><em>(0-0)</em></u></p>\r\n\r\n<ul>\r\n\t<li>&nbsp;</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><u><em>Joueurs qui se sont démarqués :</em></u></p>\r\n\r\n<p>&nbsp;</p>\r\n"
+    format: full_html
 default_value_callback: ''
 settings: {  }
 field_type: text_long
