@@ -10,7 +10,6 @@ body {
 header {
   background-color: #E6E6E6;
 }
-
 .simple-grey {
   color: #E6E6E6 !important;
 }
@@ -59,13 +58,71 @@ header {
   border-color: #F7F7F9 !important;
 }
 
+/* CSS Loader Infinite Scroll */
+.pager {
+  margin: 0;
+  padding: 0;
+}
+.pager .pager__item {
+  padding-top: 50px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  list-style: none;
+}
+.pager .pager__item > .button {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.pager .pager__item > .button:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #D0021B;
+  border-radius: 10rem;
+  z-index: -2;
+}
+.pager .pager__item > .button:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #840111;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+.pager .pager__item > .button:hover {
+  color: #fff;
+}
+.pager .pager__item > .button:hover:before {
+  width: 100%;
+}
+
 /* Hub notes formulaire exposé */
 #views-exposed-form-note-hub .dropdown > button {
   background-color: #E6E6E6;
 }
+#views-exposed-form-note-hub .filtres > .filter-group {
+  justify-content: center;
+}
 
 /* Hub notes */
-.notes {
+.notes .views-infinite-scroll-content-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -106,6 +163,7 @@ header {
 .note-teaser {
   width: 35%;
   border: 1px solid #4A4A4A;
+  overflow: hidden;
 }
 .note-teaser a {
   color: #4A4A4A;
@@ -136,6 +194,50 @@ header {
 }
 .note-teaser .equipe img {
   height: 60%;
+}
+
+@media (max-width: 1200px) {
+  .note-teaser {
+    width: 25%;
+  }
+
+  .note-teaser .resultat > h2 {
+    font-size: 22px;
+  }
+
+  .note-teaser .equipe > h5 {
+    font-size: 16px;
+  }
+}
+@media (max-width: 992px) {
+  #views-exposed-form-note-hub .filtres > .filter-group {
+    flex-direction: column;
+  }
+  #views-exposed-form-note-hub .filtres-actions {
+    justify-content: center;
+  }
+
+  .notes .views-infinite-scroll-content-wrapper {
+    margin: 0;
+  }
+
+  .note-teaser {
+    width: 40%;
+  }
+}
+@media (max-width: 750px) {
+  .note-teaser {
+    width: 70%;
+  }
+}
+@media (max-width: 420px) {
+  .note-teaser {
+    width: 100%;
+  }
+
+  .note-teaser .equipe > h5 {
+    font-size: 15px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

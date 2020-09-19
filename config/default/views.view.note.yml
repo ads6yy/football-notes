@@ -14,6 +14,7 @@ dependencies:
     - node
     - taxonomy
     - user
+    - views_infinite_scroll
 id: note
 label: Note
 module: views
@@ -88,10 +89,26 @@ display:
                   collapsible: false
                   is_secondary: false
       pager:
-        type: none
+        type: infinite_scroll
         options:
-          items_per_page: null
+          items_per_page: 12
           offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Voir plus'
+            automatically_load_content: false
       style:
         type: default
       row:
@@ -347,6 +364,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - user
         - 'user.node_grants:view'
         - user.permissions
@@ -366,6 +384,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - user
         - 'user.node_grants:view'
         - user.permissions

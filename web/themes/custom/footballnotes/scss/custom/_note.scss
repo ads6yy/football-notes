@@ -1,10 +1,15 @@
 /* Hub notes formulaire exposé */
-#views-exposed-form-note-hub .dropdown > button {
-  background-color: $simple-grey;
+#views-exposed-form-note-hub {
+  .dropdown > button {
+    background-color: $simple-grey;
+  }
+  .filtres > .filter-group {
+    justify-content: center;
+  }
 }
 
 /* Hub notes */
-.notes {
+.notes .views-infinite-scroll-content-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -49,6 +54,7 @@
 .note-teaser {
   width: 35%;
   border: 1px solid $dark-grey;
+  overflow: hidden;
 
   a {
     color: $dark-grey;
@@ -82,5 +88,51 @@
     img {
       height: 60%;
     }
+  }
+}
+
+@media (max-width: $screen-m) {
+  .note-teaser {
+    width: 25%;
+  }
+  .note-teaser .resultat > h2 {
+    font-size: 22px;
+  }
+  .note-teaser .equipe > h5 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: $screen-s) {
+  #views-exposed-form-note-hub {
+    .filtres > .filter-group {
+      flex-direction: column;
+    }
+    .filtres-actions {
+      justify-content: center;
+    }
+  }
+
+  .notes .views-infinite-scroll-content-wrapper {
+    margin: 0;
+  }
+
+  .note-teaser {
+    width: 40%;
+  }
+}
+
+@media (max-width: $screen-xs) {
+  .note-teaser {
+    width: 70%;
+  }
+}
+
+@media (max-width: $screen-xss) {
+  .note-teaser {
+    width: 100%;
+  }
+  .note-teaser .equipe > h5 {
+    font-size: 15px;
   }
 }
