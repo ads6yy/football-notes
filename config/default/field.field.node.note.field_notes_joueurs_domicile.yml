@@ -1,0 +1,34 @@
+uuid: c278d871-b861-4f76-b94d-1fa971250edc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notes_joueurs_domicile
+    - node.type.note
+    - paragraphs.paragraphs_type.note_joueur
+  module:
+    - entity_reference_revisions
+id: node.note.field_notes_joueurs_domicile
+field_name: field_notes_joueurs_domicile
+entity_type: node
+bundle: note
+label: 'Notes joueurs domicile'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      note_joueur: note_joueur
+    target_bundles_drag_drop:
+      note_joueur:
+        enabled: true
+        weight: 3
+      saison_championnat:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

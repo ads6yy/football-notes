@@ -1,18 +1,18 @@
-uuid: 6872b8dd-9554-4406-9bf8-f0df350d15b4
+uuid: e71f5f24-6f40-411b-9076-50a2f06cd187
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.storage.node.field_notes_joueurs
+    - field.storage.node.field_notes_joueurs_exterieur
     - node.type.note
     - paragraphs.paragraphs_type.note_joueur
   module:
     - entity_reference_revisions
-id: node.note.field_notes_joueurs
-field_name: field_notes_joueurs
+id: node.note.field_notes_joueurs_exterieur
+field_name: field_notes_joueurs_exterieur
 entity_type: node
 bundle: note
-label: 'Notes joueurs'
+label: 'Notes joueurs extérieur'
 description: ''
 required: false
 translatable: false

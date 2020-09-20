@@ -58,6 +58,10 @@ header {
   border-color: #F7F7F9 !important;
 }
 
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
 /* CSS Loader Infinite Scroll */
 .pager {
   margin: 0;

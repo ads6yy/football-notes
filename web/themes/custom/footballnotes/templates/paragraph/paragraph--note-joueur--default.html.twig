@@ -1,0 +1,28 @@
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished',
+  'd-flex justify-content-between py-2'
+]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {% set note = content.field_note.value %}
+      {{ content.field_nom_du_joueur }}
+      <div class="ballons">
+        {% if content.field_note.0["#markup"]|number_format > 0 %}
+          {% for i in range(1, content.field_note.0["#markup"]|number_format|abs) %}
+            <img src="/themes/custom/footballnotes/img/like.png">
+          {% endfor %}
+        {% else %}
+          {% for i in range(1, content.field_note.0["#markup"]|number_format|abs) %}
+            <img class="rotate-180" src="/themes/custom/footballnotes/img/dislike.png">
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

@@ -10,7 +10,8 @@ dependencies:
     - field.field.node.note.field_equipe_a_domicile
     - field.field.node.note.field_equipe_a_exterieur
     - field.field.node.note.field_images
-    - field.field.node.note.field_notes_joueurs
+    - field.field.node.note.field_notes_joueurs_domicile
+    - field.field.node.note.field_notes_joueurs_exterieur
     - field.field.node.note.field_saison
     - field.field.node.note.field_score_equipe_a_domicile
     - field.field.node.note.field_score_equipe_a_l_exterieur
@@ -69,7 +70,8 @@ third_party_settings:
       label: Composition
     group_notes:
       children:
-        - field_notes_joueurs
+        - field_notes_joueurs_domicile
+        - field_notes_joueurs_exterieur
       parent_name: ''
       weight: 9
       format_type: details
@@ -132,9 +134,21 @@ content:
       media_types: {  }
     third_party_settings: {  }
     region: content
-  field_notes_joueurs:
+  field_notes_joueurs_domicile:
     type: entity_reference_paragraphs
     weight: 10
+    settings:
+      title: Paragraphe
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: note_joueur
+    third_party_settings: {  }
+    region: content
+  field_notes_joueurs_exterieur:
+    type: entity_reference_paragraphs
+    weight: 11
     settings:
       title: Paragraphe
       title_plural: Paragraphs

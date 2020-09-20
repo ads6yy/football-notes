@@ -1,4 +1,4 @@
-uuid: 9a897403-c2cd-4514-9039-3a92989c526c
+uuid: 009b936e-cf47-46b8-b163-09fd4f040e60
 langcode: fr
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - entity_reference_revisions
     - node
     - paragraphs
-id: node.field_notes_joueurs
-field_name: field_notes_joueurs
+id: node.field_notes_joueurs_exterieur
+field_name: field_notes_joueurs_exterieur
 entity_type: node
 type: entity_reference_revisions
 settings:

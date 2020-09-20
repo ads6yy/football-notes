@@ -11,7 +11,8 @@ dependencies:
     - field.field.node.note.field_equipe_a_domicile
     - field.field.node.note.field_equipe_a_exterieur
     - field.field.node.note.field_images
-    - field.field.node.note.field_notes_joueurs
+    - field.field.node.note.field_notes_joueurs_domicile
+    - field.field.node.note.field_notes_joueurs_exterieur
     - field.field.node.note.field_saison
     - field.field.node.note.field_score_equipe_a_domicile
     - field.field.node.note.field_score_equipe_a_l_exterieur
@@ -84,6 +85,7 @@ hidden:
   field_composition: true
   field_contenu: true
   field_images: true
-  field_notes_joueurs: true
+  field_notes_joueurs_domicile: true
+  field_notes_joueurs_exterieur: true
   field_saison: true
   langcode: true

@@ -53,6 +53,9 @@ header {
   border-color: $off-white !important;
 }
 
+.rotate-180 {
+  transform: rotate(180deg);
+}
 
 /* CSS Loader Infinite Scroll */
 .pager {

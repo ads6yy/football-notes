@@ -10,7 +10,8 @@ dependencies:
     - field.field.node.note.field_equipe_a_domicile
     - field.field.node.note.field_equipe_a_exterieur
     - field.field.node.note.field_images
-    - field.field.node.note.field_notes_joueurs
+    - field.field.node.note.field_notes_joueurs_domicile
+    - field.field.node.note.field_notes_joueurs_exterieur
     - field.field.node.note.field_saison
     - field.field.node.note.field_score_equipe_a_domicile
     - field.field.node.note.field_score_equipe_a_l_exterieur
@@ -83,10 +84,19 @@ content:
       link: false
     third_party_settings: {  }
     region: content
-  field_notes_joueurs:
+  field_notes_joueurs_domicile:
     type: entity_reference_revisions_entity_view
-    weight: 112
-    label: hidden
+    weight: 113
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_notes_joueurs_exterieur:
+    type: entity_reference_revisions_entity_view
+    weight: 114
+    label: above
     settings:
       view_mode: default
       link: ''
