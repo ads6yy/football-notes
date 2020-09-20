@@ -213,6 +213,17 @@
 }
 
 @media (max-width: $screen-xss) {
+  .note {
+    .score {
+      flex-direction: column;
+      .equipe {
+        margin: 20px 0;
+      }
+    }
+    .swiper-container {
+      height: 300px;
+    }
+  }
   .note-teaser {
     width: 100%;
   }

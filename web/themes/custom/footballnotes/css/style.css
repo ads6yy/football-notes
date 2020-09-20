@@ -350,7 +350,17 @@ header {
     width: 70%;
   }
 }
-@media (max-width: 420px) {
+@media (max-width: 470px) {
+  .note .score {
+    flex-direction: column;
+  }
+  .note .score .equipe {
+    margin: 20px 0;
+  }
+  .note .swiper-container {
+    height: 300px;
+  }
+
   .note-teaser {
     width: 100%;
   }
