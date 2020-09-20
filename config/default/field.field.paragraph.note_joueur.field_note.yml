@@ -1,0 +1,23 @@
+uuid: 2563fea7-c31a-49b8-a75b-a04bd9b313fd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_note
+    - paragraphs.paragraphs_type.note_joueur
+id: paragraph.note_joueur.field_note
+field_name: field_note
+entity_type: paragraph
+bundle: note_joueur
+label: Note
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: -5
+  max: 5
+  prefix: ''
+  suffix: ''
+field_type: integer

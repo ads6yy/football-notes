@@ -1,0 +1,31 @@
+uuid: 3e0823cc-78cb-488a-b241-f0c27641c54f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.note_joueur.field_nom_du_joueur
+    - field.field.paragraph.note_joueur.field_note
+    - paragraphs.paragraphs_type.note_joueur
+id: paragraph.note_joueur.default
+targetEntityType: paragraph
+bundle: note_joueur
+mode: default
+content:
+  field_nom_du_joueur:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_note:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true

@@ -4,11 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.note.field_championnat
+    - field.field.node.note.field_composition
     - field.field.node.note.field_contenu
     - field.field.node.note.field_date_du_match
     - field.field.node.note.field_equipe_a_domicile
     - field.field.node.note.field_equipe_a_exterieur
     - field.field.node.note.field_images
+    - field.field.node.note.field_notes_joueurs
     - field.field.node.note.field_saison
     - field.field.node.note.field_score_equipe_a_domicile
     - field.field.node.note.field_score_equipe_a_l_exterieur
@@ -17,6 +19,7 @@ dependencies:
     - datetime
     - field_group
     - media_library
+    - paragraphs
     - path
     - text
 third_party_settings:
@@ -35,6 +38,49 @@ third_party_settings:
         id: ''
         classes: container-inline
       label: 'Score du match'
+    group_resume:
+      children:
+        - field_contenu
+        - field_images
+      parent_name: ''
+      weight: 7
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Résumé
+    group_composition:
+      children:
+        - field_composition
+      parent_name: ''
+      weight: 8
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Composition
+    group_notes:
+      children:
+        - field_notes_joueurs
+      parent_name: ''
+      weight: 9
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Notes
 id: node.note.default
 targetEntityType: node
 bundle: note
@@ -46,8 +92,15 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_composition:
+    type: media_library_widget
+    weight: 9
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
   field_contenu:
-    weight: 7
+    weight: 8
     settings:
       rows: 5
       placeholder: ''
@@ -79,6 +132,18 @@ content:
       media_types: {  }
     third_party_settings: {  }
     region: content
+  field_notes_joueurs:
+    type: entity_reference_paragraphs
+    weight: 10
+    settings:
+      title: Paragraphe
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: note_joueur
+    third_party_settings: {  }
+    region: content
   field_saison:
     weight: 1
     settings: {  }
@@ -101,7 +166,7 @@ content:
     region: content
   path:
     type: path
-    weight: 8
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }

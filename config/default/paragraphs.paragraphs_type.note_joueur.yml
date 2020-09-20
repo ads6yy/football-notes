@@ -1,0 +1,10 @@
+uuid: 38571a8e-c3b5-4277-ab19-7ec593c39e1d
+langcode: fr
+status: true
+dependencies: {  }
+id: note_joueur
+label: 'Note joueur'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

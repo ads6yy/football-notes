@@ -1,0 +1,31 @@
+uuid: decd2668-4ce0-48db-a54e-d3e8ce6c8ec2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.note_joueur.field_nom_du_joueur
+    - field.field.paragraph.note_joueur.field_note
+    - paragraphs.paragraphs_type.note_joueur
+id: paragraph.note_joueur.default
+targetEntityType: paragraph
+bundle: note_joueur
+mode: default
+content:
+  field_nom_du_joueur:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_note:
+    weight: 1
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden: {  }
