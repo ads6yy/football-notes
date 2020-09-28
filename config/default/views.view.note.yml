@@ -346,7 +346,17 @@ display:
           granularity: hour
           plugin_id: datetime
       title: Notes
-      header: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: '@total notes'
+          plugin_id: result
       footer: {  }
       empty: {  }
       relationships: {  }
