@@ -10,6 +10,14 @@ body {
 header {
   background-color: #E6E6E6;
 }
+header .logo {
+  display: flex;
+  justify-content: center;
+}
+header .logo img {
+  width: 70%;
+}
+
 .simple-grey {
   color: #E6E6E6 !important;
 }
@@ -126,11 +134,18 @@ header {
 }
 
 /* Hub notes */
-.notes .views-infinite-scroll-content-wrapper {
+.view--note--hub .notes .views-infinite-scroll-content-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 -15% 0 -16%;
+}
+
+.view--note--hub .view-header {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 /* CSS note full */

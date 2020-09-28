@@ -9,11 +9,17 @@
 }
 
 /* Hub notes */
-.notes .views-infinite-scroll-content-wrapper {
+.view--note--hub .notes .views-infinite-scroll-content-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 -15% 0 -16%;
+}
+.view--note--hub .view-header {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 /* CSS note full */
