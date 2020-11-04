@@ -1,0 +1,7 @@
+fn_data.form:
+  path: '/admin/structure/fn_data'
+  defaults:
+    _title: 'Data'
+    _form: 'Drupal\fn_data\Form\DataForm'
+  requirements:
+    _permission: 'access content'

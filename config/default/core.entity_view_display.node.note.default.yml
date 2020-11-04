@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.note.field_date_du_match
     - field.field.node.note.field_equipe_a_domicile
     - field.field.node.note.field_equipe_a_exterieur
+    - field.field.node.note.field_id_match
     - field.field.node.note.field_images
     - field.field.node.note.field_notes_joueurs_domicile
     - field.field.node.note.field_notes_joueurs_exterieur
@@ -74,6 +75,14 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_id_match:
+    weight: 115
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_images:
     type: entity_reference_entity_view

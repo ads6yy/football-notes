@@ -24,6 +24,8 @@
 
 /* CSS note full */
 .note {
+  min-height: 1200px;
+
   .tab-wrap {
     transition: 0.3s box-shadow ease;
     border-radius: 6px;
@@ -123,6 +125,69 @@
     }
   }
 
+  .modal {
+    top: 15vh;
+    .modal-dialog {
+      max-width: 45%;
+      .modal-title {
+        text-transform: uppercase;
+      }
+      .popin-joueur {
+        max-height: 550px;
+        overflow: hidden auto;
+        padding: 0;
+        h4:not(:first-of-type) {
+          margin: 20px 0 0;
+        }
+        h4 {
+          color: $red;
+        }
+        .stat {
+          position: relative;
+          margin-right: 50px;
+          .donnee {
+            position: absolute;
+            right: 0;
+          }
+        }
+
+        .tab-content {
+          padding-bottom: 0;
+          .tab-pane.active {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+          }
+        }
+        .tab-card-header {
+          background: none;
+          padding: 10px 15px 10px 0;
+          .nav-tabs {
+            border: none;
+            margin: 0px;
+            >li {
+              margin-right: 2px;
+              >a {
+                border: 0;
+                border-bottom: 2px solid transparent;
+                margin-right: 0;
+                color: #737373;
+                padding: 2px 15px;
+                &:hover {
+                  color: #007bff;
+                }
+              }
+              >a.show {
+                border-bottom: 2px solid #007bff;
+                color: #007bff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .swiper-container {
     height: 800px;
     .swiper-slide {
@@ -137,6 +202,214 @@
     .swiper-button-next, .swiper-button-prev {
       color: $off-white;
     }
+  }
+
+  .tab__content.data {
+    display: flex;
+    .equipe {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      &.away {
+        right: 0;
+        left: unset;
+        .remplacants {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row-reverse;
+        }
+        .position-1 {
+          position: absolute;
+          right: 10%;
+          bottom: 50%;
+          transform: translate(50%, 50%);
+        }
+        .position-2 {
+          position: absolute;
+          right: 30%;
+          bottom: 10%;
+          transform: translate(50%, 50%);
+        }
+        .position-3 {
+          position: absolute;
+          right: 30%;
+          bottom: 90%;
+          transform: translate(50%, 50%);
+        }
+        .position-4 {
+          position: absolute;
+          right: 52%;
+          bottom: 72%;
+          transform: translate(50%, 50%);
+        }
+        .position-5 {
+          position: absolute;
+          right: 30%;
+          bottom: 36%;
+          transform: translate(50%, 50%);
+        }
+        .position-6 {
+          position: absolute;
+          right: 30%;
+          bottom: 63%;
+          transform: translate(50%, 50%);
+        }
+        .position-7 {
+          position: absolute;
+          right: 75%;
+          bottom: 12%;
+          transform: translate(50%, 50%);
+        }
+        .position-8 {
+          position: absolute;
+          right: 52%;
+          bottom: 30%;
+          transform: translate(50%, 50%);
+        }
+        .position-9 {
+          position: absolute;
+          right: 88%;
+          bottom: 50%;
+          transform: translate(50%, 50%);
+        }
+        .position-10 {
+          position: absolute;
+          right: 68%;
+          bottom: 50%;
+          transform: translate(50%, 50%);
+        }
+        .position-11 {
+          position: absolute;
+          right: 75%;
+          bottom: 88%;
+          transform: translate(50%, 50%);
+        }
+      }
+      &.home {
+        left: 0;
+        .remplacants {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .position-1 {
+          position: absolute;
+          left: 10%;
+          bottom: 50%;
+          transform: translate(-50%, 50%);
+        }
+        .position-2 {
+          position: absolute;
+          left: 30%;
+          bottom: 10%;
+          transform: translate(-50%, 50%);
+        }
+        .position-3 {
+          position: absolute;
+          left: 30%;
+          bottom: 90%;
+          transform: translate(-50%, 50%);
+        }
+        .position-4 {
+          position: absolute;
+          left: 52%;
+          bottom: 72%;
+          transform: translate(-50%, 50%);
+        }
+        .position-5 {
+          position: absolute;
+          left: 30%;
+          bottom: 36%;
+          transform: translate(-50%, 50%);
+        }
+        .position-6 {
+          position: absolute;
+          left: 30%;
+          bottom: 63%;
+          transform: translate(-50%, 50%);
+        }
+        .position-7 {
+          position: absolute;
+          left: 75%;
+          bottom: 12%;
+          transform: translate(-50%, 50%);
+        }
+        .position-8 {
+          position: absolute;
+          left: 52%;
+          bottom: 30%;
+          transform: translate(-50%, 50%);
+        }
+        .position-9 {
+          position: absolute;
+          left: 88%;
+          bottom: 50%;
+          transform: translate(-50%, 50%);
+        }
+        .position-10 {
+          position: absolute;
+          left: 68%;
+          bottom: 50%;
+          transform: translate(-50%, 50%);
+        }
+        .position-11 {
+          position: absolute;
+          left: 75%;
+          bottom: 88%;
+          transform: translate(-50%, 50%);
+        }
+      }
+
+    }
+
+    .remplacants {
+      .joueur {
+        span {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+
+    .joueur {
+      text-decoration: underline;
+      cursor: pointer;
+      margin: 10px;
+      text-align: center;
+      position: relative;
+      img {
+        width: 80px;
+      }
+      span {
+        position: absolute;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+        left: 50%;
+        background-color: white;
+        padding: 2px 10px;
+        border-radius: 2px;
+        font-weight: 500;
+        min-width: 80px;
+      }
+      span.numero {
+        bottom: 50%;
+        font-size: 25px;
+        background-color: unset;
+      }
+    }
+  }
+}
+
+.charts-line {
+  display: flex;
+  flex-direction: row;
+  .highcharts-touches {
+    width: 100%;
   }
 }
 

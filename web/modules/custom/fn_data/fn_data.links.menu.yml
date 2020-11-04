@@ -1,0 +1,6 @@
+fn_data_form:
+  title: 'Football DATA Form'
+  route_name: fn_data.form
+  description: 'Football DATA Form'
+  parent: system.admin_structure
+  weight: 99

@@ -1,0 +1,6 @@
+name: fn_data
+type: module
+description: Football Notes module to get Data.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

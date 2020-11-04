@@ -1,0 +1,19 @@
+uuid: d301da19-e57e-4f24-aee6-0fc1d157df8d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_id_match
+    - node.type.note
+id: node.note.field_id_match
+field_name: field_id_match
+entity_type: node
+bundle: note
+label: 'ID match'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

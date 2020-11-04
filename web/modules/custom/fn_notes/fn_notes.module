@@ -5,6 +5,7 @@
  * Primary module hooks for fn_notes module.
  */
 
+use Drupal\Core\Site\Settings;
 use \Drupal\taxonomy\Entity\Term;
 use \Drupal\Core\Form\FormStateInterface;
 
@@ -45,6 +46,64 @@ function fn_notes_preprocess_node__note__full(&$variables) {
   $mediaEquipeAExterieur = $termEquipeAExterieur->get('field_logo')->referencedEntities()[0];
   $fileUrlEquipeAExterieur = $mediaEquipeAExterieur->field_media_image->referencedEntities()[0]->getFileUri();
   $variables['img_equipe_a_exterieur'] = file_create_url($fileUrlEquipeAExterieur);
+
+  // Import data Match.
+  $idMatch = $element['#node']->get('field_id_match')->getString() ?? NULL;
+  if ($idMatch) {
+    $dataMatch = getMatch($idMatch);
+
+    // Tableau statistique match de football.
+    $equipeHomeJoueurs = $dataMatch['Home']['players'];
+    $equipeAwayJoueurs = $dataMatch['Away']['players'];
+
+    $topTouchesBalles = [];
+    $topTouchesBallesHome = [];
+    $topTouchesBallesAway= [];
+
+    // Itération sur les joueurs home.
+    foreach ($equipeHomeJoueurs as $joueur) {
+      $data = [
+        'joueur' => $joueur['info']['lastname'] ?? '',
+        'touches' => $joueur['stat']['touches'] ?? 0,
+      ];
+      $topTouchesBallesHome[] = $data;
+      $topTouchesBalles[] = $data;
+    }
+    // Itération sur les joueurs away.
+    foreach ($equipeAwayJoueurs as $joueur) {
+      $data = [
+        'joueur' => $joueur['info']['lastname'] ?? '',
+        'touches' => $joueur['stat']['touches'] ?? 0,
+      ];
+      $topTouchesBallesAway[] = $data;
+      $topTouchesBalles[] = $data;
+    }
+
+    // Une fois les tableaux construits, on les tries.
+    usort($topTouchesBallesHome, function ($item1, $item2) {
+      return $item2['touches'] <=> $item1['touches'];
+    });
+    usort($topTouchesBallesAway, function ($item1, $item2) {
+      return $item2['touches'] <=> $item1['touches'];
+    });
+    usort($topTouchesBalles, function ($item1, $item2) {
+      return $item2['touches'] <=> $item1['touches'];
+    });
+
+    // On construit les tableaux nécessaires pour les graphiques Highcharts.
+    $variables['#attached']['drupalSettings']['note']['touchesTotal'] = buildHighchartsJS(
+      array_slice($topTouchesBalles, 0, 5), sprintf('%s + %s', $dataMatch['Home']['club'], $dataMatch['Away']['club'])
+    );
+    $variables['#attached']['drupalSettings']['note']['touchesTotalHome'] = buildHighchartsJS(
+      array_slice($topTouchesBallesHome, 0, 5), $dataMatch['Home']['club']
+    );
+    $variables['#attached']['drupalSettings']['note']['touchesTotalAway'] = buildHighchartsJS(
+      array_slice($topTouchesBallesAway, 0, 5), $dataMatch['Away']['club']
+    );
+
+    $variables['data']['equipeHome'] = buildEquipeMatch($dataMatch['Home']);
+    $variables['data']['equipeAway'] = buildEquipeMatch($dataMatch['Away']);
+  }
 }
 
 /* FORMULAIRE */
@@ -106,4 +165,134 @@ function addSelectPicker($formField) {
   $formField['data-live-search'] = "TRUE";
 
   return $formField;
+}
+
+/**
+ * Fonction pour récupérer un match.
+ *
+ * @param $matchID
+ */
+function getMatch($matchID) {
+  $mpgURL = Settings::get('mpg-url');
+  $url = sprintf('%s/championship/match/%s', $mpgURL, $matchID);
+
+  $client = \Drupal::httpClient();
+  $request = $client->get($url);
+  $resultat = $request->getBody()->getContents();
+  $decodeResultat = json_decode($resultat, TRUE);
+  return $decodeResultat;
+}
+
+function buildHighchartsJS($arrayData, $serieName) {
+  $result = [];
+  foreach (array_slice($arrayData, 0, 5) as $key => $value) {
+    $result['categorie'][] = $value['joueur'];
+    $result['serie'][] = $value['touches'];
+    $result['serieName'] = $serieName;
+  }
+  return $result;
+}
+
+// Fonction permettant la création des équipes Home/Away.
+function buildEquipeMatch($data) {
+  $result = [];
+  foreach ($data['players'] as $player) {
+    if ($player['info']['sub'] === 1) {
+      $type = 'remplacants';
+    } else {
+      switch ($player['info']['position']) {
+        case 'Goalkeeper';
+          $type = 'gardien';
+          break;
+        case 'Defender';
+          $type = 'defenseurs';
+          break;
+        case 'Midfielder';
+          $type = 'milieux';
+          break;
+        case 'Forward';
+        case 'Striker';
+          $type = 'attaquants';
+          break;
+        default:
+          $type = 'remplacants';
+          break;
+      }
+    }
+
+    switch ($type) {
+      case 'gardien':
+        $result[$type][] = [
+          'id' => $player['info']['idplayer'],
+          'name' => $player['info']['lastname'],
+          'position' => $player['info']['formation_place'],
+          'stats' => [
+            'globales' => [
+              'Arrêts tirs cadrés' => isset($player['stat']['saved_ibox']) ? $player['stat']['saved_ibox'] : NULL,
+              'Arrêts tirs non cadrés' => isset($player['stat']['saved_obox']) ? $player['stat']['saved_obox'] : NULL,
+              'Arrêts plongeons' => isset($player['stat']['diving_save']) ? $player['stat']['diving_save'] : NULL,
+              'Pénalty sauvé' => isset($player['stat']['penalty_save']) ? $player['stat']['penalty_save'] : NULL,
+              'Carton jaune' => isset($player['stat']['yellow']) ? $player['stat']['yellow'] : NULL,
+              'Carton rouge' => isset($player['stat']['red_card']) ? $player['stat']['red_card'] : NULL,
+              'Erreurs menant à un tir' => isset($player['stat']['error_lead_to_shot']) ? $player['stat']['error_lead_to_shot'] : NULL,
+              'Erreurs menant à un but' => isset($player['stat']['error_lead_to_goal']) ? $player['stat']['error_lead_to_goal'] : NULL,
+            ],
+          ]
+        ];
+        break;
+      case 'defenseurs':
+      case 'milieux':
+      case 'attaquants':
+      case 'remplacants':
+      default:
+        $result[$type][] = [
+          'id' => $player['info']['idplayer'],
+          'name' => $player['info']['lastname'],
+          'position' => $player['info']['formation_place'],
+          'stats' => [
+            'globales' => [
+              'Touches' => isset($player['stat']['touches']) ? $player['stat']['touches'] : NULL,
+              '% de passes réussies' => isset($player['stat']['pass']) ? sprintf('%s %%', round($player['stat']['pass']*100, 1)) : NULL,
+              'Duels gagnés' => isset($player['stat']['duel_won']) ? $player['stat']['duel_won'] : NULL,
+              'Duels perdus' => isset($player['stat']['duel_lost']) ? $player['stat']['duel_lost'] : NULL,
+              'Dépossédé du ballon' => isset($player['stat']['dispossessed']) ? $player['stat']['dispossessed'] : NULL,
+              'Touches ratées' => isset($player['stat']['unsuccessful_touch']) ? $player['stat']['unsuccessful_touch'] : NULL,
+              'Fautes' => isset($player['stat']['fouls']) ? $player['stat']['fouls'] : NULL,
+              'Fautes subies' => isset($player['stat']['was_fouled']) ? $player['stat']['was_fouled'] : NULL,
+              'Gestes dangereux' => isset($player['stat']['dangerous_play']) ? $player['stat']['dangerous_play'] : NULL,
+            ],
+            'defensives' => [
+              'Hors-jeu provoqués' => isset($player['stat']['offside_provoked']) ? $player['stat']['offside_provoked'] : NULL,
+              'Interceptions' => isset($player['stat']['interception']) ? $player['stat']['interception'] : NULL,
+              'Tacles gagnés' => isset($player['stat']['won_tackle']) ? $player['stat']['won_tackle'] : NULL,
+              'Tacle en tant que dernier défenseur' => isset($player['stat']['last_man_tackle']) ? $player['stat']['last_man_tackle'] : NULL,
+              'Tacles ratés' => isset($player['stat']['bad_tackle']) ? $player['stat']['bad_tackle'] : NULL,
+              'CSC' => isset($player['stat']['own_goals']) ? $player['stat']['own_goals'] : NULL,
+              'Erreur menant à un tir' => isset($player['stat']['error_lead_to_shot']) ? $player['stat']['error_lead_to_shot'] : NULL,
+              'Erreur menant à un but' => isset($player['stat']['error_lead_to_goal']) ? $player['stat']['error_lead_to_goal'] : NULL,
+              'Centres bloqués' => isset($player['stat']['last_man_tackle']) ? $player['stat']['last_man_tackle'] : NULL,
+            ],
+            'offensives' => [
+              'Buts' => isset($player['stat']['goals']) ? $player['stat']['goals'] : NULL,
+              'Passe décisive' => isset($player['stat']['goal_assist']) ? $player['stat']['goal_assist'] : NULL,
+              'Occasions dangereuses créées' => isset($player['stat']['big_chance_created']) ? $player['stat']['big_chance_created'] : NULL,
+              'Occasions dangereuses ratées' => isset($player['stat']['big_chance_missed']) ? $player['stat']['big_chance_missed'] : NULL,
+              'Penaltys gagnés' => isset($player['stat']['penalty_won']) ? $player['stat']['penalty_won'] : NULL,
+              'Penaltys concédés' => isset($player['stat']['penalty_conceded']) ? $player['stat']['penalty_conceded'] : NULL,
+              'Tentatives de tirs' => isset($player['stat']['total_scoring_att']) ? $player['stat']['total_scoring_att'] : NULL,
+              'Tirs cadrés' => isset($player['stat']['total_scoring_att']) ? $player['stat']['total_scoring_att'] - $player['stat']['shot_off_target'] : NULL,
+              'Tirs non cadrés' => isset($player['stat']['shot_off_target']) ? $player['stat']['shot_off_target'] : NULL,
+              'Hors-jeu' => isset($player['stat']['total_offside']) ? $player['stat']['total_offside'] : NULL,
+              'Corners gagnés' => isset($player['stat']['won_corners']) ? $player['stat']['won_corners'] : NULL,
+            ],
+          ]
+        ];
+        break;
+    }
+  }
+
+//  dump($data);
+//  die;
+
+  return $result;
 }

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.note.field_date_du_match
     - field.field.node.note.field_equipe_a_domicile
     - field.field.node.note.field_equipe_a_exterieur
+    - field.field.node.note.field_id_match
     - field.field.node.note.field_images
     - field.field.node.note.field_notes_joueurs_domicile
     - field.field.node.note.field_notes_joueurs_exterieur
@@ -83,6 +84,20 @@ third_party_settings:
         open: false
         required_fields: true
       label: Notes
+    group_data:
+      children:
+        - field_id_match
+      parent_name: ''
+      weight: 10
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Data
 id: node.note.default
 targetEntityType: node
 bundle: note
@@ -126,6 +141,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_id_match:
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_images:
     type: media_library_widget

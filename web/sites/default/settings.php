@@ -772,6 +772,8 @@ $databases['default']['default'] = array (
 );
 $settings['config_sync_directory'] = '../config/default';
 
+$settings['mpg-url'] = 'https://api.monpetitgazon.com';
+
 /**
  * Load local development override configuration, if available.
  *

@@ -28,3 +28,4 @@ notes:
 note:
   js:
     js/note.js: {}
+    //code.highcharts.com/highcharts.js : { type: external }

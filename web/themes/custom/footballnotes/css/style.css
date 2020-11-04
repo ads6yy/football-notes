@@ -149,6 +149,9 @@ header .logo img {
 }
 
 /* CSS note full */
+.note {
+  min-height: 1200px;
+}
 .note .tab-wrap {
   transition: 0.3s box-shadow ease;
   border-radius: 6px;
@@ -278,6 +281,67 @@ header .logo img {
 .note .equipe img {
   height: 100%;
 }
+.note .modal {
+  top: 15vh;
+}
+.note .modal .modal-dialog {
+  max-width: 45%;
+}
+.note .modal .modal-dialog .modal-title {
+  text-transform: uppercase;
+}
+.note .modal .modal-dialog .popin-joueur {
+  max-height: 550px;
+  overflow: hidden auto;
+  padding: 0;
+}
+.note .modal .modal-dialog .popin-joueur h4:not(:first-of-type) {
+  margin: 20px 0 0;
+}
+.note .modal .modal-dialog .popin-joueur h4 {
+  color: #D0021B;
+}
+.note .modal .modal-dialog .popin-joueur .stat {
+  position: relative;
+  margin-right: 50px;
+}
+.note .modal .modal-dialog .popin-joueur .stat .donnee {
+  position: absolute;
+  right: 0;
+}
+.note .modal .modal-dialog .popin-joueur .tab-content {
+  padding-bottom: 0;
+}
+.note .modal .modal-dialog .popin-joueur .tab-content .tab-pane.active {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.note .modal .modal-dialog .popin-joueur .tab-card-header {
+  background: none;
+  padding: 10px 15px 10px 0;
+}
+.note .modal .modal-dialog .popin-joueur .tab-card-header .nav-tabs {
+  border: none;
+  margin: 0px;
+}
+.note .modal .modal-dialog .popin-joueur .tab-card-header .nav-tabs > li {
+  margin-right: 2px;
+}
+.note .modal .modal-dialog .popin-joueur .tab-card-header .nav-tabs > li > a {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-right: 0;
+  color: #737373;
+  padding: 2px 15px;
+}
+.note .modal .modal-dialog .popin-joueur .tab-card-header .nav-tabs > li > a:hover {
+  color: #007bff;
+}
+.note .modal .modal-dialog .popin-joueur .tab-card-header .nav-tabs > li > a.show {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+}
 .note .swiper-container {
   height: 800px;
 }
@@ -292,6 +356,206 @@ header .logo img {
 }
 .note .swiper-container .swiper-button-next, .note .swiper-container .swiper-button-prev {
   color: #F7F7F9;
+}
+.note .tab__content.data {
+  display: flex;
+}
+.note .tab__content.data .equipe {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+}
+.note .tab__content.data .equipe.away {
+  right: 0;
+  left: unset;
+}
+.note .tab__content.data .equipe.away .remplacants {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+.note .tab__content.data .equipe.away .position-1 {
+  position: absolute;
+  right: 10%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-2 {
+  position: absolute;
+  right: 30%;
+  bottom: 10%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-3 {
+  position: absolute;
+  right: 30%;
+  bottom: 90%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-4 {
+  position: absolute;
+  right: 52%;
+  bottom: 72%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-5 {
+  position: absolute;
+  right: 30%;
+  bottom: 36%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-6 {
+  position: absolute;
+  right: 30%;
+  bottom: 63%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-7 {
+  position: absolute;
+  right: 75%;
+  bottom: 12%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-8 {
+  position: absolute;
+  right: 52%;
+  bottom: 30%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-9 {
+  position: absolute;
+  right: 88%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-10 {
+  position: absolute;
+  right: 68%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.away .position-11 {
+  position: absolute;
+  right: 75%;
+  bottom: 88%;
+  transform: translate(50%, 50%);
+}
+.note .tab__content.data .equipe.home {
+  left: 0;
+}
+.note .tab__content.data .equipe.home .remplacants {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.note .tab__content.data .equipe.home .position-1 {
+  position: absolute;
+  left: 10%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-2 {
+  position: absolute;
+  left: 30%;
+  bottom: 10%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-3 {
+  position: absolute;
+  left: 30%;
+  bottom: 90%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-4 {
+  position: absolute;
+  left: 52%;
+  bottom: 72%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-5 {
+  position: absolute;
+  left: 30%;
+  bottom: 36%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-6 {
+  position: absolute;
+  left: 30%;
+  bottom: 63%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-7 {
+  position: absolute;
+  left: 75%;
+  bottom: 12%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-8 {
+  position: absolute;
+  left: 52%;
+  bottom: 30%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-9 {
+  position: absolute;
+  left: 88%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-10 {
+  position: absolute;
+  left: 68%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .equipe.home .position-11 {
+  position: absolute;
+  left: 75%;
+  bottom: 88%;
+  transform: translate(-50%, 50%);
+}
+.note .tab__content.data .remplacants .joueur span {
+  background-color: black;
+  color: white;
+}
+.note .tab__content.data .joueur {
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 10px;
+  text-align: center;
+  position: relative;
+}
+.note .tab__content.data .joueur img {
+  width: 80px;
+}
+.note .tab__content.data .joueur span {
+  position: absolute;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  left: 50%;
+  background-color: white;
+  padding: 2px 10px;
+  border-radius: 2px;
+  font-weight: 500;
+  min-width: 80px;
+}
+.note .tab__content.data .joueur span.numero {
+  bottom: 50%;
+  font-size: 25px;
+  background-color: unset;
+}
+
+.charts-line {
+  display: flex;
+  flex-direction: row;
+}
+.charts-line .highcharts-touches {
+  width: 100%;
 }
 
 /* CSS note teaser */
