@@ -35,6 +35,8 @@ function fn_notes_preprocess_node__note__teaser(&$variables) {
 
 function fn_notes_preprocess_node__note__full(&$variables) {
   $element = $variables['elements'];
+  $saison = explode('/', $element['field_saison'][0]['#plain_text'])[0];
+
   $fieldEquipeAdomicile = $element['field_equipe_a_domicile'];
   $termEquipeAdomicile = $fieldEquipeAdomicile['#items']->referencedEntities()[0];
   $mediaEquipeAdomicile = $termEquipeAdomicile->get('field_logo')->referencedEntities()[0];
@@ -100,6 +102,24 @@ function fn_notes_preprocess_node__note__full(&$variables) {
     $variables['#attached']['drupalSettings']['note']['touchesTotalAway'] = buildHighchartsJS(
       array_slice($topTouchesBallesAway, 0, 5), $dataMatch['Away']['club']
     );
+
+
+    // Récupération de l'url du maillot domicile.
+    $termNameEquipeADomicile = $termEquipeAdomicile->getName();
+    $urlMaillotDomicile = sprintf('maillots/%s/%s_1.png', $saison, str_replace(' ', '_', strtolower(stripAccents($termNameEquipeADomicile))));
+    if (file_exists(sprintf('public://%s', $urlMaillotDomicile))) {
+      $variables['maillotDomicile'] = sprintf('/sites/default/files/%s', $urlMaillotDomicile);
+    } else {
+      $variables['maillotDomicile'] = '/themes/custom/footballnotes/img/t-shirt-white.png';
+    }
+    // Récupération de l'url du maillot extérieur.
+    $termNameEquipeAExterieur = $termEquipeAExterieur->getName();
+    $urlMaillotExterieur = sprintf('maillots/%s/%s_2.png', $saison, str_replace(' ', '_', strtolower(stripAccents($termNameEquipeAExterieur))));
+    if (file_exists(sprintf('public://%s', $urlMaillotExterieur))) {
+      $variables['maillotExterieur'] = sprintf('/sites/default/files/%s', $urlMaillotExterieur);
+    } else {
+      $variables['maillotExterieur'] = '/themes/custom/footballnotes/img/t-shirt-black.png';
+    }
 
     $variables['data']['equipeHome'] = buildEquipeMatch($dataMatch['Home']);
     $variables['data']['equipeAway'] = buildEquipeMatch($dataMatch['Away']);
@@ -291,8 +311,9 @@ function buildEquipeMatch($data) {
     }
   }
 
-//  dump($data);
-//  die;
-
   return $result;
+}
+
+function stripAccents($str) {
+  return strtr(utf8_decode($str), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
 }

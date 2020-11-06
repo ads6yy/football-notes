@@ -164,7 +164,7 @@
           padding: 10px 15px 10px 0;
           .nav-tabs {
             border: none;
-            margin: 0px;
+            margin: 0;
             >li {
               margin-right: 2px;
               >a {
@@ -367,15 +367,6 @@
 
     }
 
-    .remplacants {
-      .joueur {
-        span {
-          background-color: black;
-          color: white;
-        }
-      }
-    }
-
     .joueur {
       text-decoration: underline;
       cursor: pointer;
@@ -383,7 +374,8 @@
       text-align: center;
       position: relative;
       img {
-        width: 80px;
+        width: 100px;
+        height: auto;
       }
       span {
         position: absolute;
@@ -395,11 +387,7 @@
         border-radius: 2px;
         font-weight: 500;
         min-width: 80px;
-      }
-      span.numero {
-        bottom: 50%;
-        font-size: 25px;
-        background-color: unset;
+        border: 1px solid black;
       }
     }
   }

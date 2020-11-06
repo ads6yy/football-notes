@@ -1,22 +1,21 @@
 {{ attach_library('footballnotes/note') }}
 {# Macro Terrain #}
-{% macro renderTerrainEquipe(equipe) %}
-  {{ _self.renderTerrainJoueurs(equipe.gardien) }}
-  {{ _self.renderTerrainJoueurs(equipe.defenseurs) }}
-  {{ _self.renderTerrainJoueurs(equipe.milieux) }}
-  {{ _self.renderTerrainJoueurs(equipe.attaquants) }}
+{% macro renderTerrainEquipe(equipe, maillot) %}
+  {{ _self.renderTerrainJoueurs(equipe.gardien, maillot) }}
+  {{ _self.renderTerrainJoueurs(equipe.defenseurs, maillot) }}
+  {{ _self.renderTerrainJoueurs(equipe.milieux, maillot) }}
+  {{ _self.renderTerrainJoueurs(equipe.attaquants, maillot) }}
   <div class="remplacants">
-    {{ _self.renderTerrainJoueurs(equipe.remplacants, true) }}
+    {{ _self.renderTerrainJoueurs(equipe.remplacants, maillot, true) }}
   </div>
 {% endmacro %}
-{% macro renderTerrainJoueurs(joueurs, remplacant = false) %}
+{% macro renderTerrainJoueurs(joueurs, maillot, remplacant = false) %}
   {% for joueur in joueurs %}
     <div data-toggle="modal" data-target="#popin-joueur-{{ joueur.id }}" class="joueur position-{{ joueur.position }}">
       {% if remplacant %}
-        <img src="/themes/custom/footballnotes/img/t-shirt-black.png">
+        <img src="{{ maillot }}">
       {% else %}
-        <img src="/themes/custom/footballnotes/img/t-shirt-white.png">
-        <span class="numero">{{ joueur.position }}</span>
+        <img src="{{ maillot }}">
       {% endif %}
       <span>{{ joueur.name }}</span>
     </div>
@@ -111,14 +110,14 @@
 
   <div class="tab-wrap">
 
-    <input type="radio" id="resume" name="tabGroup" class="tab" checked>
+    <input type="radio" id="resume" name="tabGroup" class="tab">
     <label for="resume">{{ 'Résumé' }}</label>
     <input type="radio" id="composition" name="tabGroup" class="tab">
     <label for="composition">{{ 'Composition' }}</label>
     <input type="radio" id="note" name="tabGroup" class="tab">
     <label for="note">{{ 'Notes joueurs' }}</label>
     {% if content.field_id_match.0 %}
-      <input type="radio" id="data" name="tabGroup" class="tab">
+      <input type="radio" id="data" name="tabGroup" class="tab" checked>
       <label for="data">{{ 'DATA' }}</label>
     {% endif %}
 
@@ -154,12 +153,12 @@
         <img src="/{{ directory }}/img/soccer_field.jpg" style="width: 100%; height: auto;">
         {# Equipe HOME #}
         <div class="equipe home">
-          {{ _self.renderTerrainEquipe(data.equipeHome) }}
+          {{ _self.renderTerrainEquipe(data.equipeHome, maillotDomicile) }}
         </div>
 
         {# Equipe AWAY #}
         <div class="equipe away">
-          {{ _self.renderTerrainEquipe(data.equipeAway) }}
+          {{ _self.renderTerrainEquipe(data.equipeAway, maillotExterieur) }}
         </div>
       </div>
     {% endif %}

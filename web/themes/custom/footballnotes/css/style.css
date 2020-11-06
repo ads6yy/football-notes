@@ -323,7 +323,7 @@ header .logo img {
 }
 .note .modal .modal-dialog .popin-joueur .tab-card-header .nav-tabs {
   border: none;
-  margin: 0px;
+  margin: 0;
 }
 .note .modal .modal-dialog .popin-joueur .tab-card-header .nav-tabs > li {
   margin-right: 2px;
@@ -519,10 +519,6 @@ header .logo img {
   bottom: 88%;
   transform: translate(-50%, 50%);
 }
-.note .tab__content.data .remplacants .joueur span {
-  background-color: black;
-  color: white;
-}
 .note .tab__content.data .joueur {
   text-decoration: underline;
   cursor: pointer;
@@ -531,7 +527,8 @@ header .logo img {
   position: relative;
 }
 .note .tab__content.data .joueur img {
-  width: 80px;
+  width: 100px;
+  height: auto;
 }
 .note .tab__content.data .joueur span {
   position: absolute;
@@ -543,11 +540,7 @@ header .logo img {
   border-radius: 2px;
   font-weight: 500;
   min-width: 80px;
-}
-.note .tab__content.data .joueur span.numero {
-  bottom: 50%;
-  font-size: 25px;
-  background-color: unset;
+  border: 1px solid black;
 }
 
 .charts-line {
