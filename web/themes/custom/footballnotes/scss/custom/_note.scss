@@ -482,12 +482,57 @@
     margin: 0;
   }
 
+  .note {
+    .modal {
+      top: 15vh;
+      .modal-dialog {
+        max-width: 80%;
+        margin: 1.75rem auto;
+      }
+    }
+
+    .tab__content.data {
+      .joueur {
+        img.maillot {
+          width: 80px;
+        }
+        span {
+          font-size: 12px;
+          min-width: unset;
+        }
+      }
+    }
+  }
+
   .note-teaser {
     width: 40%;
   }
 }
 
 @media (max-width: $screen-xs) {
+  .note {
+    .tab__content.data {
+      .joueur {
+        .icones {
+          img.buts {
+            width: 14px;
+          }
+          img.red, img.yellow {
+            width: 10px;
+          }
+        }
+        img.maillot {
+          width: 60px;
+        }
+        span {
+          font-size: 11px;
+          padding: 2px;
+          min-width: 40px;
+        }
+      }
+    }
+  }
+
   .note-teaser {
     width: 70%;
   }
@@ -503,6 +548,25 @@
     }
     .swiper-container {
       height: 300px;
+    }
+    .tab__content.data {
+      .joueur {
+        .icones {
+          img.buts {
+            width: 10px;
+          }
+          img.red, img.yellow {
+            width: 8px;
+          }
+        }
+        img.maillot {
+          width: 50px;
+        }
+        span {
+          font-size: 9px;
+          padding: 2px;
+        }
+      }
     }
   }
   .note-teaser {

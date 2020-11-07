@@ -627,11 +627,41 @@ header .logo img {
     margin: 0;
   }
 
+  .note .modal {
+    top: 15vh;
+  }
+  .note .modal .modal-dialog {
+    max-width: 80%;
+    margin: 1.75rem auto;
+  }
+  .note .tab__content.data .joueur img.maillot {
+    width: 80px;
+  }
+  .note .tab__content.data .joueur span {
+    font-size: 12px;
+    min-width: unset;
+  }
+
   .note-teaser {
     width: 40%;
   }
 }
 @media (max-width: 750px) {
+  .note .tab__content.data .joueur .icones img.buts {
+    width: 14px;
+  }
+  .note .tab__content.data .joueur .icones img.red, .note .tab__content.data .joueur .icones img.yellow {
+    width: 10px;
+  }
+  .note .tab__content.data .joueur img.maillot {
+    width: 60px;
+  }
+  .note .tab__content.data .joueur span {
+    font-size: 11px;
+    padding: 2px;
+    min-width: 40px;
+  }
+
   .note-teaser {
     width: 70%;
   }
@@ -645,6 +675,19 @@ header .logo img {
   }
   .note .swiper-container {
     height: 300px;
+  }
+  .note .tab__content.data .joueur .icones img.buts {
+    width: 10px;
+  }
+  .note .tab__content.data .joueur .icones img.red, .note .tab__content.data .joueur .icones img.yellow {
+    width: 8px;
+  }
+  .note .tab__content.data .joueur img.maillot {
+    width: 50px;
+  }
+  .note .tab__content.data .joueur span {
+    font-size: 9px;
+    padding: 2px;
   }
 
   .note-teaser {
