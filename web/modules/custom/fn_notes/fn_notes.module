@@ -280,6 +280,8 @@ function buildEquipeMatch($data) {
               'Fautes' => isset($player['stat']['fouls']) ? $player['stat']['fouls'] : NULL,
               'Fautes subies' => isset($player['stat']['was_fouled']) ? $player['stat']['was_fouled'] : NULL,
               'Gestes dangereux' => isset($player['stat']['dangerous_play']) ? $player['stat']['dangerous_play'] : NULL,
+              'Carton jaune' => isset($player['stat']['yellow']) ? $player['stat']['yellow'] : NULL,
+              'Carton rouge' => isset($player['stat']['red_card']) ? $player['stat']['red_card'] : NULL,
             ],
             'defensives' => [
               'Hors-jeu provoqués' => isset($player['stat']['offside_provoked']) ? $player['stat']['offside_provoked'] : NULL,

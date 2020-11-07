@@ -12,12 +12,36 @@
 {% macro renderTerrainJoueurs(joueurs, maillot, remplacant = false) %}
   {% for joueur in joueurs %}
     <div data-toggle="modal" data-target="#popin-joueur-{{ joueur.id }}" class="joueur position-{{ joueur.position }}">
+      <div class="icones">
+        {% if joueur.stats.offensives['Buts'] is defined and joueur.stats.offensives['Buts']|number_format > 0 %}
+          {% for i in 1..joueur.stats.offensives['Buts']|number_format %}
+            <img class="buts" src="/themes/custom/footballnotes/img/football_ball.png">
+          {% endfor %}
+        {% endif %}
+        {% if joueur.stats.defensives['CSC'] is defined and joueur.stats.defensives['CSC']|number_format > 0 %}
+          {% for i in 1..joueur.stats.defensives['CSC']|number_format %}
+            <img class="buts" src="/themes/custom/footballnotes/img/football_own_ball.png">
+          {% endfor %}
+        {% endif %}
+        {% if joueur.stats.globales['Carton jaune']|number_format > 0 %}
+          {% for i in 1..joueur.stats.globales['Carton jaune']|number_format %}
+            <img class="yellow" src="/themes/custom/footballnotes/img/yellow_card.png">
+          {% endfor %}
+        {% endif %}
+        {% if joueur.stats.globales['Carton red']|number_format > 0 %}
+          {% for i in 1..joueur.stats.globales['Carton red']|number_format %}
+            <img class="red" src="/themes/custom/footballnotes/img/red_card.png">
+          {% endfor %}
+        {% endif %}
+      </div>
       {% if remplacant %}
-        <img src="{{ maillot }}">
+        <img class="maillot" src="{{ maillot }}">
       {% else %}
-        <img src="{{ maillot }}">
+        <img class="maillot" src="{{ maillot }}">
       {% endif %}
-      <span>{{ joueur.name }}</span>
+      <span>
+        {{ joueur.name }}
+      </span>
     </div>
   {% endfor %}
 {% endmacro %}
@@ -150,7 +174,7 @@
     {# DATA #}
     {% if content.field_id_match.0 %}
       <div class="tab__content data">
-        <img src="/{{ directory }}/img/soccer_field.jpg" style="width: 100%; height: auto;">
+        <img src="/{{ directory }}/img/soccer_field.png" style="width: 100%; height: auto;">
         {# Equipe HOME #}
         <div class="equipe home">
           {{ _self.renderTerrainEquipe(data.equipeHome, maillotDomicile) }}

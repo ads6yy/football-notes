@@ -526,7 +526,21 @@ header .logo img {
   text-align: center;
   position: relative;
 }
-.note .tab__content.data .joueur img {
+.note .tab__content.data .joueur .icones {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.note .tab__content.data .joueur .icones img.buts {
+  width: 20px;
+}
+.note .tab__content.data .joueur .icones img.red, .note .tab__content.data .joueur .icones img.yellow {
+  width: 12px;
+}
+.note .tab__content.data .joueur img.maillot {
   width: 100px;
   height: auto;
 }
