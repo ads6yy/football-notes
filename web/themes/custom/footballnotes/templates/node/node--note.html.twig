@@ -28,8 +28,8 @@
             <img class="yellow" src="/themes/custom/footballnotes/img/yellow_card.png">
           {% endfor %}
         {% endif %}
-        {% if joueur.stats.globales['Carton red']|number_format > 0 %}
-          {% for i in 1..joueur.stats.globales['Carton red']|number_format %}
+        {% if joueur.stats.globales['Carton rouge']|number_format > 0 %}
+          {% for i in 1..joueur.stats.globales['Carton rouge']|number_format %}
             <img class="red" src="/themes/custom/footballnotes/img/red_card.png">
           {% endfor %}
         {% endif %}
@@ -176,12 +176,12 @@
       <div class="tab__content data">
         <img src="/{{ directory }}/img/soccer_field.png" style="width: 100%; height: auto;">
         {# Equipe HOME #}
-        <div class="equipe home">
+        <div class="equipe home formation-{{ data.equipeHome.formation }}">
           {{ _self.renderTerrainEquipe(data.equipeHome, maillotDomicile) }}
         </div>
 
         {# Equipe AWAY #}
-        <div class="equipe away">
+        <div class="equipe away formation-{{ data.equipeAway.formation }}">
           {{ _self.renderTerrainEquipe(data.equipeAway, maillotExterieur) }}
         </div>
       </div>

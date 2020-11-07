@@ -312,6 +312,7 @@ function buildEquipeMatch($data) {
         break;
     }
   }
+  $result['formation'] = reset($data['players'])['info']['formation_used'];
 
   return $result;
 }
