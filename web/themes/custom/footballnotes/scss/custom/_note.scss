@@ -209,6 +209,7 @@
     flex-direction: column;
     .terrain {
       display: flex;
+      position: relative;
       .equipe {
         position: absolute;
         width: 50%;

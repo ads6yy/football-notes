@@ -363,6 +363,7 @@ header .logo img {
 }
 .note .tab__content.data .terrain {
   display: flex;
+  position: relative;
 }
 .note .tab__content.data .terrain .equipe {
   position: absolute;

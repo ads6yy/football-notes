@@ -167,7 +167,73 @@
           </div>
         </div>
         <div class="graphiques">
-
+          <h2>{{ 'Graphiques de données' }}</h2>
+          <div id="accordion">
+            <div class="card">
+            <div class="card-header">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#most-ballons-touches">
+                  {{ 'Joueurs ayant touché le plus de ballons' }}
+                </button>
+              </h5>
+            </div>
+            <div id="most-ballons-touches" class="collapse">
+              <div class="card-body">
+                <div id="container-most-touches-all"></div>
+                <div id="container-most-touches-home"></div>
+                <div id="container-most-touches-away"></div>
+              </div>
+            </div>
+          </div>
+            <div class="card">
+              <div class="card-header">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#less-ballons-touches">
+                    {{ 'Joueurs ayant touché le moins de ballons' }}
+                  </button>
+                </h5>
+              </div>
+              <div id="less-ballons-touches" class="collapse">
+                <div class="card-body">
+                  <div id="container-less-touches-all"></div>
+                  <div id="container-less-touches-home"></div>
+                  <div id="container-less-touches-away"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#most-duels-won">
+                    {{ 'Joueurs ayant gagnés le plus de duels' }}
+                  </button>
+                </h5>
+              </div>
+              <div id="most-duels-won" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  <div id="most-duels-won-all"></div>
+                  <div id="most-duels-won-home"></div>
+                  <div id="most-duels-won-away"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#most-duels-lost">
+                    {{ 'Joueurs ayant perdus le plus de duels' }}
+                  </button>
+                </h5>
+              </div>
+              <div id="most-duels-lost" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  <div id="most-duels-lost-all"></div>
+                  <div id="most-duels-lost-home"></div>
+                  <div id="most-duels-lost-away"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     {% endif %}
