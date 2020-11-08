@@ -136,14 +136,10 @@
 
     <input type="radio" id="resume" name="tabGroup" class="tab">
     <label for="resume">{{ 'Résumé' }}</label>
-    <input type="radio" id="composition" name="tabGroup" class="tab">
+    <input type="radio" id="composition" name="tabGroup" class="tab" checked>
     <label for="composition">{{ 'Composition' }}</label>
     <input type="radio" id="note" name="tabGroup" class="tab">
     <label for="note">{{ 'Notes joueurs' }}</label>
-    {% if content.field_id_match.0 %}
-      <input type="radio" id="data" name="tabGroup" class="tab" checked>
-      <label for="data">{{ 'DATA' }}</label>
-    {% endif %}
 
     {# Résumé #}
     <div class="tab__content">
@@ -155,10 +151,27 @@
       {% endif %}
     </div>
 
-    {# Composition #}
-    <div class="tab__content d-flex justify-content-center">
-      <img class="img-fluid" src="{{ content.field_composition }}" >
-    </div>
+    {# Composition / DATA #}
+    {% if content.field_id_match.0 %}
+      <div class="tab__content data">
+        <div class="terrain">
+          <img src="/{{ directory }}/img/soccer_field.png" style="width: 100%; height: auto;">
+          {# Equipe HOME #}
+          <div class="equipe home formation-{{ data.equipeHome.formation }}">
+            {{ _self.renderTerrainEquipe(data.equipeHome, maillotDomicile) }}
+          </div>
+
+          {# Equipe AWAY #}
+          <div class="equipe away formation-{{ data.equipeAway.formation }}">
+            {{ _self.renderTerrainEquipe(data.equipeAway, maillotExterieur) }}
+          </div>
+        </div>
+        <div class="graphiques">
+
+        </div>
+      </div>
+    {% endif %}
+
     {# Notes #}
     <div class="tab__content row">
       <div class="col-xl-6 border-right">
@@ -171,21 +184,6 @@
       </div>
     </div>
 
-    {# DATA #}
-    {% if content.field_id_match.0 %}
-      <div class="tab__content data">
-        <img src="/{{ directory }}/img/soccer_field.png" style="width: 100%; height: auto;">
-        {# Equipe HOME #}
-        <div class="equipe home formation-{{ data.equipeHome.formation }}">
-          {{ _self.renderTerrainEquipe(data.equipeHome, maillotDomicile) }}
-        </div>
-
-        {# Equipe AWAY #}
-        <div class="equipe away formation-{{ data.equipeAway.formation }}">
-          {{ _self.renderTerrainEquipe(data.equipeAway, maillotExterieur) }}
-        </div>
-      </div>
-    {% endif %}
   </div>
 
   {# Modales équipe HOME #}

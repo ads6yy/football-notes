@@ -195,4 +195,11 @@
     }
   };
 
+  Drupal.behaviors.divTerrainHeight = {
+    attach: function (context, settings) {
+      var remplacantsHeight = $('.remplacants').height();
+      $('.tab__content.data').css('margin-bottom', remplacantsHeight+100);
+    }
+  };
+
 })(jQuery, Drupal, drupalSettings);
