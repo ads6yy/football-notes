@@ -1308,6 +1308,7 @@ header .logo img {
 }
 .note-teaser a > img {
   max-height: 205px;
+  border-bottom: 1px solid #4A4A4A;
 }
 .note-teaser a:hover {
   text-decoration: none;
