@@ -116,6 +116,35 @@
     width: 100%;
   }
 
+  .buteurs {
+    display: flex;
+    .home {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .buteur img:last-of-type {
+        margin: 0 30px 0 0;
+      }
+    }
+    .away {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .buteur img:first-of-type {
+        margin: 0 0 0 30px;
+      }
+    }
+    .buteur {
+      font-weight: 600;
+      text-transform: uppercase;
+      img {
+        width: 25px;
+      }
+    }
+  }
+
   .equipe {
     display: flex;
     align-items: center;
@@ -219,6 +248,14 @@
         &.away {
           right: 0;
           left: unset;
+          .formation {
+            position: absolute;
+            right: 15px;
+            top: 0;
+            color: white;
+            letter-spacing: 3px;
+          }
+
           .remplacants {
             position: absolute;
             top: 100%;
@@ -661,6 +698,14 @@
         }
         &.home {
           left: 0;
+          .formation {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            color: white;
+            letter-spacing: 3px;
+          }
+
           .remplacants {
             position: absolute;
             top: 100%;

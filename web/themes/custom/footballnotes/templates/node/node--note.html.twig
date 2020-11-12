@@ -121,12 +121,34 @@
     </div>
     <div class='resultat mx-5'>
       <h2 class='m-0 font-weight-bold'>
-        {{ content.field_score_equipe_a_domicile }}{{ ' : ' }}{{ content.field_score_equipe_a_l_exterieur }}
+        {{ content.field_score_equipe_a_domicile }}{{ '  -  ' }}{{ content.field_score_equipe_a_l_exterieur }}
       </h2>
     </div>
     <div class='equipe'>
       <h5 class='domicile m-0 px-2'>{{ content.field_equipe_a_exterieur }}</h5>
       <img class='img-fluid' src='{{ img_equipe_a_exterieur }}'/>
+    </div>
+  </div>
+  <div class="buteurs">
+    <div class="home">
+      {% for buteur in data.equipeHome.buteurs %}
+        <div class="buteur">
+          {{ buteur.nom }}
+          {% for i in 1..buteur.buts|number_format %}
+            <img class="icone buts" src="/themes/custom/footballnotes/img/football_ball.png">
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="away">
+      {% for buteur in data.equipeAway.buteurs %}
+        <div class="buteur">
+          {% for i in 1..buteur.buts|number_format %}
+            <img class="icone buts" src="/themes/custom/footballnotes/img/football_ball.png">
+          {% endfor %}
+          {{ buteur.nom }}
+        </div>
+      {% endfor %}
     </div>
   </div>
 
@@ -156,11 +178,13 @@
           <img src="/{{ directory }}/img/soccer_field.png" style="width: 100%; height: auto;">
           {# Equipe HOME #}
           <div class="equipe home formation-{{ data.equipeHome.formation }}">
+            <span class="formation">{{ data.equipeHome.formation }}</span>
             {{ _self.renderTerrainEquipe(data.equipeHome, maillotDomicile) }}
           </div>
 
           {# Equipe AWAY #}
           <div class="equipe away formation-{{ data.equipeAway.formation }}">
+            <span class="formation">{{ data.equipeAway.formation }}</span>
             {{ _self.renderTerrainEquipe(data.equipeAway, maillotExterieur) }}
           </div>
         </div>

@@ -273,6 +273,34 @@ header .logo img {
   align-items: center;
   width: 100%;
 }
+.note .buteurs {
+  display: flex;
+}
+.note .buteurs .home {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.note .buteurs .home .buteur img:last-of-type {
+  margin: 0 30px 0 0;
+}
+.note .buteurs .away {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.note .buteurs .away .buteur img:first-of-type {
+  margin: 0 0 0 30px;
+}
+.note .buteurs .buteur {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.note .buteurs .buteur img {
+  width: 25px;
+}
 .note .equipe {
   display: flex;
   align-items: center;
@@ -375,6 +403,13 @@ header .logo img {
 .note .tab__content.data .terrain .equipe.away {
   right: 0;
   left: unset;
+}
+.note .tab__content.data .terrain .equipe.away .formation {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  color: white;
+  letter-spacing: 3px;
 }
 .note .tab__content.data .terrain .equipe.away .remplacants {
   position: absolute;
@@ -802,6 +837,13 @@ header .logo img {
 }
 .note .tab__content.data .terrain .equipe.home {
   left: 0;
+}
+.note .tab__content.data .terrain .equipe.home .formation {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  color: white;
+  letter-spacing: 3px;
 }
 .note .tab__content.data .terrain .equipe.home .remplacants {
   position: absolute;
