@@ -1265,6 +1265,17 @@ header .logo img {
   min-width: 80px;
   border: 1px solid black;
 }
+.note .tab__content.data .graphiques .card {
+  border-radius: 0;
+  border-color: #4A4A4A;
+}
+.note .tab__content.data .graphiques .card .card-header {
+  border-bottom: none;
+  background-color: #E6E6E6;
+}
+.note .tab__content.data .graphiques .card .card-header button {
+  color: #D0021B;
+}
 
 .charts-line {
   display: flex;

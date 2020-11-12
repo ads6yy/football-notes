@@ -1143,6 +1143,20 @@
         }
       }
     }
+    .graphiques {
+      .card {
+        border-radius: 0;
+        border-color: $dark-grey;
+        margin: 10px 0;
+        .card-header {
+          border-bottom: none;
+          background-color: $simple-grey;
+          button {
+            color: $red;
+          }
+        }
+      }
+    }
   }
 }
 
