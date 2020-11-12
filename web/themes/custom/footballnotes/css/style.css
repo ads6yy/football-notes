@@ -1250,7 +1250,7 @@ header .logo img {
   right: 0;
 }
 .note .tab__content.data .terrain .joueur img.maillot {
-  width: 100px;
+  width: 75px;
   height: auto;
 }
 .note .tab__content.data .terrain .joueur span {
@@ -1368,10 +1368,10 @@ header .logo img {
     margin: 1.75rem auto;
   }
   .note .tab__content.data .terrain .joueur img.maillot {
-    width: 80px;
+    width: 60px;
   }
   .note .tab__content.data .terrain .joueur span {
-    font-size: 12px;
+    font-size: 11px;
     min-width: unset;
   }
 
@@ -1387,10 +1387,10 @@ header .logo img {
     width: 10px;
   }
   .note .tab__content.data .terrain .joueur img.maillot {
-    width: 60px;
+    width: 50px;
   }
   .note .tab__content.data .terrain .joueur span {
-    font-size: 11px;
+    font-size: 10px;
     padding: 2px;
     min-width: 40px;
   }
@@ -1416,7 +1416,7 @@ header .logo img {
     width: 8px;
   }
   .note .tab__content.data .terrain .joueur img.maillot {
-    width: 50px;
+    width: 40px;
   }
   .note .tab__content.data .terrain .joueur span {
     font-size: 9px;
