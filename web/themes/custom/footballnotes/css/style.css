@@ -276,7 +276,9 @@ header .logo img {
 .note .equipe {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100px;
+  width: 250px;
 }
 .note .equipe img {
   height: 100%;
