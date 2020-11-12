@@ -1144,6 +1144,8 @@
       }
     }
     .graphiques {
+      padding-top: 50px;
+      border-top: 1px solid black;
       .card {
         border-radius: 0;
         border-color: $dark-grey;
@@ -1153,6 +1155,9 @@
           background-color: $simple-grey;
           button {
             color: $red;
+            &:focus {
+              box-shadow: none;
+            }
           }
         }
       }

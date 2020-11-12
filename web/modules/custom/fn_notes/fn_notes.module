@@ -160,154 +160,107 @@ function buildHighchartsData($variables, $dataMatch) {
   $equipeHomeJoueurs = $dataMatch['Home']['players'];
   $equipeAwayJoueurs = $dataMatch['Away']['players'];
 
-  $topTouchesBalles = [];
-  $topTouchesBallesHome = [];
-  $topTouchesBallesAway= [];
-  $duelsWonTotal = [];
-  $duelsWonHome = [];
-  $duelsWonAway = [];
-  $duelsLostTotal = [];
-  $duelsLostHome = [];
-  $duelsLostAway = [];
+  $joueursGlobal = [];
+  $joueursHome = [];
+  $joueursAway = [];
 
   // Itération sur les joueurs home.
   foreach ($equipeHomeJoueurs as $joueur) {
     if ($joueur['info']['mins_played'] > 0 && $joueur['info']['formation_place'] > 1) {
       $data = [
         'joueur' => $joueur['info']['lastname'] ?? '',
+        'mins_played' => $joueur['info']['mins_played'] ?? 0,
         'touches' => $joueur['stat']['touches'] ?? 0,
         'duel_won' => $joueur['stat']['duel_won'] ?? 0,
         'duel_lost' => $joueur['stat']['duel_lost'] ?? 0,
-        'mins_played' => $joueur['info']['mins_played'] ?? 0,
+        'fouls' => $joueur['stat']['fouls'] ?? 0,
+        'was_fouled' => $joueur['stat']['was_fouled'] ?? 0,
+        'interception' => $joueur['stat']['interception'] ?? 0,
       ];
-      $topTouchesBallesHome[] = $data;
-      $topTouchesBalles[] = $data;
-      $duelsWonTotal[] = $data;
-      $duelsWonHome[] = $data;
-      $duelsLostTotal[] = $data;
-      $duelsLostHome[] = $data;
+      $joueursGlobal[] = $data;
+      $joueursHome[] = $data;
     }
   }
+
   // Itération sur les joueurs away.
   foreach ($equipeAwayJoueurs as $joueur) {
     if ($joueur['info']['mins_played'] > 0 && $joueur['info']['formation_place'] > 1) {
       $data = [
         'joueur' => $joueur['info']['lastname'] ?? '',
+        'mins_played' => $joueur['info']['mins_played'] ?? 0,
         'touches' => $joueur['stat']['touches'] ?? 0,
         'duel_won' => $joueur['stat']['duel_won'] ?? 0,
         'duel_lost' => $joueur['stat']['duel_lost'] ?? 0,
-        'mins_played' => $joueur['info']['mins_played'] ?? 0,
+        'fouls' => $joueur['stat']['fouls'] ?? 0,
+        'was_fouled' => $joueur['stat']['was_fouled'] ?? 0,
+        'interception' => $joueur['stat']['interception'] ?? 0,
       ];
-      $topTouchesBallesAway[] = $data;
-      $topTouchesBalles[] = $data;
-      $duelsWonTotal[] = $data;
-      $duelsWonAway[] = $data;
-      $duelsLostTotal[] = $data;
-      $duelsLostAway[] = $data;
+      $joueursGlobal[] = $data;
+      $joueursAway[] = $data;
     }
   }
 
-  /////////////////////////
-  /// Touches de balles ///
-  /////////////////////////
-  // Une fois les tableaux construits, on les trient de manières décroissantes.
-  usort($topTouchesBallesHome, function ($item1, $item2) {
-    return $item2['touches'] <=> $item1['touches'];
-  });
-  usort($topTouchesBallesAway, function ($item1, $item2) {
-    return $item2['touches'] <=> $item1['touches'];
-  });
-  usort($topTouchesBalles, function ($item1, $item2) {
-    return $item2['touches'] <=> $item1['touches'];
-  });
-  // On construit les tableaux nécessaires pour les graphiques Highcharts.
-  $variables['#attached']['drupalSettings']['note']['mostTouchesTotal'] = buildHighchartsJS(
-    array_slice($topTouchesBalles, 0, 5), sprintf('%s + %s', $dataMatch['Home']['club'], $dataMatch['Away']['club']), 'touches'
+  $variables['#attached']['drupalSettings']['note']['global'] = buildHighchartsJS(
+    $joueursGlobal,
+    ['touches', 'duel_won', 'duel_lost', 'fouls', 'was_fouled', 'interception'],
+    sprintf('%s + %s', $dataMatch['Home']['club'], $dataMatch['Away']['club'])
   );
-  $variables['#attached']['drupalSettings']['note']['mostTouchesTotalHome'] = buildHighchartsJS(
-    array_slice($topTouchesBallesHome, 0, 5), $dataMatch['Home']['club'], 'touches'
+  $variables['#attached']['drupalSettings']['note']['home'] = buildHighchartsJS(
+    $joueursHome,
+    ['touches', 'duel_won', 'duel_lost', 'fouls', 'was_fouled', 'interception'],
+    $dataMatch['Home']['club']
   );
-  $variables['#attached']['drupalSettings']['note']['mostTouchesTotalAway'] = buildHighchartsJS(
-    array_slice($topTouchesBallesAway, 0, 5), $dataMatch['Away']['club'], 'touches'
-  );
-  // On les trient de manières croissantes.
-  usort($topTouchesBallesHome, function ($item1, $item2) {
-    return $item1['touches'] <=> $item2['touches'];
-  });
-  usort($topTouchesBallesAway, function ($item1, $item2) {
-    return $item1['touches'] <=> $item2['touches'];
-  });
-  usort($topTouchesBalles, function ($item1, $item2) {
-    return $item1['touches'] <=> $item2['touches'];
-  });
-  // On construit les tableaux nécessaires pour les graphiques Highcharts.
-  $variables['#attached']['drupalSettings']['note']['lessTouchesTotal'] = buildHighchartsJS(
-    array_slice($topTouchesBalles, 0, 5), sprintf('%s + %s', $dataMatch['Home']['club'], $dataMatch['Away']['club']), 'touches'
-  );
-  $variables['#attached']['drupalSettings']['note']['lessTouchesTotalHome'] = buildHighchartsJS(
-    array_slice($topTouchesBallesHome, 0, 5), $dataMatch['Home']['club'], 'touches'
-  );
-  $variables['#attached']['drupalSettings']['note']['lessTouchesTotalAway'] = buildHighchartsJS(
-    array_slice($topTouchesBallesAway, 0, 5), $dataMatch['Away']['club'], 'touches'
-  );
-
-  /////////////////////////
-  ///////// Duels /////////
-  /////////////////////////
-  // Une fois les tableaux construits, on les trient de manières décroissantes.
-  // Duels gagnés
-  usort($duelsWonTotal, function ($item1, $item2) {
-    return $item2['duel_won'] <=> $item1['duel_won'];
-  });
-  usort($duelsWonHome, function ($item1, $item2) {
-    return $item2['duel_won'] <=> $item1['duel_won'];
-  });
-  usort($duelsWonAway, function ($item1, $item2) {
-    return $item2['duel_won'] <=> $item1['duel_won'];
-  });
-  // On construit les tableaux nécessaires pour les graphiques Highcharts.
-  $variables['#attached']['drupalSettings']['note']['mostDuelsWonTotal'] = buildHighchartsJS(
-    array_slice($duelsWonTotal, 0, 5), sprintf('%s + %s', $dataMatch['Home']['club'], $dataMatch['Away']['club']), 'duel_won'
-  );
-  $variables['#attached']['drupalSettings']['note']['mostDuelsWonTotalHome'] = buildHighchartsJS(
-    array_slice($duelsWonHome, 0, 5), $dataMatch['Home']['club'], 'duel_won'
-  );
-  $variables['#attached']['drupalSettings']['note']['mostDuelsWonTotalAway'] = buildHighchartsJS(
-    array_slice($duelsWonAway, 0, 5), $dataMatch['Away']['club'], 'duel_won'
-  );
-  // Duels perdus
-  usort($duelsLostTotal, function ($item1, $item2) {
-    return $item2['duel_lost'] <=> $item1['duel_lost'];
-  });
-  usort($duelsLostHome, function ($item1, $item2) {
-    return $item2['duel_lost'] <=> $item1['duel_lost'];
-  });
-  usort($duelsLostAway, function ($item1, $item2) {
-    return $item2['duel_lost'] <=> $item1['duel_lost'];
-  });
-  // On construit les tableaux nécessaires pour les graphiques Highcharts.
-  $variables['#attached']['drupalSettings']['note']['mostDuelsLostTotal'] = buildHighchartsJS(
-    array_slice($duelsLostTotal, 0, 5), sprintf('%s + %s', $dataMatch['Home']['club'], $dataMatch['Away']['club']), 'duel_lost'
-  );
-  $variables['#attached']['drupalSettings']['note']['mostDuelsLostTotalHome'] = buildHighchartsJS(
-    array_slice($duelsLostHome, 0, 5), $dataMatch['Home']['club'], 'duel_lost'
-  );
-  $variables['#attached']['drupalSettings']['note']['mostDuelsLostTotalAway'] = buildHighchartsJS(
-    array_slice($duelsLostAway, 0, 5), $dataMatch['Away']['club'], 'duel_lost'
+  $variables['#attached']['drupalSettings']['note']['away'] = buildHighchartsJS(
+    $joueursAway,
+    ['touches', 'duel_won', 'duel_lost', 'fouls', 'was_fouled', 'interception'],
+    $dataMatch['Away']['club']
   );
 
   return $variables;
 }
 
-function buildHighchartsJS($arrayData, $serieName, $dataName) {
+function buildHighchartsJS($arrayData, $dataNames, $serieName, $nbrValeurs = 5, $desc = TRUE) {
   $result = [];
-  foreach (array_slice($arrayData, 0, 5) as $key => $value) {
-    $result['categorie'][] = $value['joueur'];
-    $result['serie'][] = $value[$dataName];
-    $result['serieName'] = $serieName;
+  foreach ($dataNames as $dataName) {
+    if ($desc) {
+      usort($arrayData, function ($item1, $item2) use ($dataName) {
+        return $item2[$dataName] <=> $item1[$dataName];
+      });
+    } else {
+      usort($arrayData, function ($item1, $item2) use ($dataName) {
+        return $item1[$dataName] <=> $item2[$dataName];
+      });
+    }
+
+    foreach (array_slice($arrayData, 0, $nbrValeurs) as $key => $value) {
+      $result[$dataName]['categorie'][] = $value['joueur'];
+      $result[$dataName]['serie'][] = $value[$dataName];
+      $result[$dataName]['serieName'] = $serieName;
+      $result[$dataName]['label'] = getLabel($dataName);
+    }
   }
   return $result;
 }
+
+function getLabel($dataName) {
+  switch ($dataName) {
+    case 'touches':
+      return 'ballons touchés';
+    case 'duel_won':
+      return 'duels gagnés';
+    case 'duel_lost':
+      return 'duels perdus';
+    case 'fouls':
+      return 'fautes commises';
+    case 'was_fouled':
+      return 'fautes subies';
+    case 'interception':
+      return 'interceptions';
+    default:
+      return 'aucun label';
+  }
+}
+
 
 // Fonction permettant la création des équipes Home/Away.
 function buildEquipeMatch($data) {
