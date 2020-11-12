@@ -12,28 +12,26 @@
 {% macro renderTerrainJoueurs(joueurs, maillot, remplacant = false) %}
   {% for joueur in joueurs %}
     <div data-toggle="modal" data-target="#popin-joueur-{{ joueur.id }}" class="joueur position-{{ joueur.position }}">
-      <div class="icones">
-        {% if joueur.stats.offensives['Buts'] is defined and joueur.stats.offensives['Buts']|number_format > 0 %}
-          {% for i in 1..joueur.stats.offensives['Buts']|number_format %}
-            <img class="buts" src="/themes/custom/footballnotes/img/football_ball.png">
-          {% endfor %}
-        {% endif %}
-        {% if joueur.stats.defensives['CSC'] is defined and joueur.stats.defensives['CSC']|number_format > 0 %}
-          {% for i in 1..joueur.stats.defensives['CSC']|number_format %}
-            <img class="buts" src="/themes/custom/footballnotes/img/football_own_ball.png">
-          {% endfor %}
-        {% endif %}
-        {% if joueur.stats.globales['Carton jaune']|number_format > 0 %}
-          {% for i in 1..joueur.stats.globales['Carton jaune']|number_format %}
-            <img class="yellow" src="/themes/custom/footballnotes/img/yellow_card.png">
-          {% endfor %}
-        {% endif %}
-        {% if joueur.stats.globales['Carton rouge']|number_format > 0 %}
-          {% for i in 1..joueur.stats.globales['Carton rouge']|number_format %}
-            <img class="red" src="/themes/custom/footballnotes/img/red_card.png">
-          {% endfor %}
-        {% endif %}
-      </div>
+      {% if joueur.stats.offensives['Buts'] is defined and joueur.stats.offensives['Buts']|number_format > 0 %}
+        {% for i in 1..joueur.stats.offensives['Buts']|number_format %}
+          <img class="icone buts" src="/themes/custom/footballnotes/img/football_ball.png">
+        {% endfor %}
+      {% endif %}
+      {% if joueur.stats.defensives['CSC'] is defined and joueur.stats.defensives['CSC']|number_format > 0 %}
+        {% for i in 1..joueur.stats.defensives['CSC']|number_format %}
+          <img class="icone buts" src="/themes/custom/footballnotes/img/football_own_ball.png">
+        {% endfor %}
+      {% endif %}
+      {% if joueur.stats.globales['Carton jaune']|number_format > 0 %}
+        {% for i in 1..joueur.stats.globales['Carton jaune']|number_format %}
+          <img class="icone yellow" src="/themes/custom/footballnotes/img/yellow_card.png">
+        {% endfor %}
+      {% endif %}
+      {% if joueur.stats.globales['Carton rouge']|number_format > 0 %}
+        {% for i in 1..joueur.stats.globales['Carton rouge']|number_format %}
+          <img class="icone red" src="/themes/custom/footballnotes/img/red_card.png">
+        {% endfor %}
+      {% endif %}
       {% if remplacant %}
         <img class="maillot" src="{{ maillot }}">
       {% else %}
@@ -170,21 +168,21 @@
           <h2>{{ 'Graphiques de données' }}</h2>
           <div id="accordion">
             <div class="card">
-            <div class="card-header">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#most-ballons-touches">
-                  {{ 'Joueurs ayant touché le plus de ballons' }}
-                </button>
-              </h5>
-            </div>
-            <div id="most-ballons-touches" class="collapse">
-              <div class="card-body">
-                <div id="container-global-touches"></div>
-                <div id="container-home-touches"></div>
-                <div id="container-away-touches"></div>
+              <div class="card-header">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#most-ballons-touches">
+                    {{ 'Joueurs ayant touché le plus de ballons' }}
+                  </button>
+                </h5>
+              </div>
+              <div id="most-ballons-touches" class="collapse">
+                <div class="card-body">
+                  <div id="container-global-touches"></div>
+                  <div id="container-home-touches"></div>
+                  <div id="container-away-touches"></div>
+                </div>
               </div>
             </div>
-          </div>
             <div class="card">
               <div class="card-header">
                 <h5 class="mb-0">
