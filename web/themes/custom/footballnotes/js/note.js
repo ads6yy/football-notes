@@ -98,7 +98,7 @@
   Drupal.behaviors.divTerrainHeight = {
     attach: function (context, settings) {
       var remplacantsHeight = $('.remplacants').height();
-      $('.tab__content.data > .terrain').css('margin-bottom', remplacantsHeight+100);
+      $('.tab__content.data > .terrain').css('margin-bottom', remplacantsHeight+70);
     }
   };
 

@@ -1422,19 +1422,40 @@ header .logo img {
   }
 }
 @media (max-width: 750px) {
-  .note .tab__content.data .terrain .joueur .icones img.buts {
-    width: 14px;
+  .note .tab__content.data .terrain .joueur .icone.buts {
+    display: none;
   }
-  .note .tab__content.data .terrain .joueur .icones img.red, .note .tab__content.data .terrain .joueur .icones img.yellow {
-    width: 10px;
+  .note .tab__content.data .terrain .joueur .icone.red, .note .tab__content.data .terrain .joueur .icone.yellow {
+    display: none;
   }
   .note .tab__content.data .terrain .joueur img.maillot {
-    width: 50px;
+    display: none;
   }
   .note .tab__content.data .terrain .joueur span {
     font-size: 10px;
     padding: 2px;
     min-width: 40px;
+    white-space: unset;
+  }
+  .note .tab__content.data .terrain .equipe.away .formation {
+    font-size: 10px;
+  }
+  .note .tab__content.data .terrain .equipe.away .remplacants {
+    flex-direction: column;
+    right: 50%;
+  }
+  .note .tab__content.data .terrain .equipe.away .remplacants .joueur {
+    margin: 12px 0;
+  }
+  .note .tab__content.data .terrain .equipe.home .formation {
+    font-size: 10px;
+  }
+  .note .tab__content.data .terrain .equipe.home .remplacants {
+    flex-direction: column;
+    left: 50%;
+  }
+  .note .tab__content.data .terrain .equipe.home .remplacants .joueur {
+    margin: 12px 0;
   }
 
   .note-teaser {
@@ -1450,15 +1471,6 @@ header .logo img {
   }
   .note .swiper-container {
     height: 300px;
-  }
-  .note .tab__content.data .terrain .joueur .icones img.buts {
-    width: 10px;
-  }
-  .note .tab__content.data .terrain .joueur .icones img.red, .note .tab__content.data .terrain .joueur .icones img.yellow {
-    width: 8px;
-  }
-  .note .tab__content.data .terrain .joueur img.maillot {
-    width: 40px;
   }
   .note .tab__content.data .terrain .joueur span {
     font-size: 9px;

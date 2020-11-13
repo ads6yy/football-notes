@@ -1326,21 +1326,46 @@
     .tab__content.data {
       .terrain {
         .joueur {
-          .icones {
-            img.buts {
-              width: 14px;
-            }
-            img.red, img.yellow {
-              width: 10px;
-            }
+          .icone.buts {
+            display: none;
+          }
+          .icone.red, .icone.yellow {
+            display: none;
           }
           img.maillot {
-            width: 50px;
+            display: none;
           }
           span {
             font-size: 10px;
             padding: 2px;
             min-width: 40px;
+            white-space: unset;
+          }
+        }
+        .equipe {
+          &.away {
+            .formation {
+              font-size: 10px;
+            }
+            .remplacants {
+              flex-direction: column;
+              right: 50%;
+              .joueur {
+                margin: 12px 0;
+              }
+            }
+          }
+          &.home {
+            .formation {
+              font-size: 10px;
+            }
+            .remplacants {
+              flex-direction: column;
+              left: 50%;
+              .joueur {
+                margin: 12px 0;
+              }
+            }
           }
         }
       }
@@ -1366,17 +1391,6 @@
     .tab__content.data {
       .terrain {
         .joueur {
-          .icones {
-            img.buts {
-              width: 10px;
-            }
-            img.red, img.yellow {
-              width: 8px;
-            }
-          }
-          img.maillot {
-            width: 40px;
-          }
           span {
             font-size: 9px;
             padding: 2px;
