@@ -19,9 +19,9 @@
         "cweagans/composer-patches": "^1.6",
         "drupal/admin_toolbar": "^2.3",
         "drupal/better_exposed_filters": "^5.0@beta",
-        "drupal/core-composer-scaffold": "^9",
-        "drupal/core-project-message": "^9",
-        "drupal/core-recommended": "^9",
+        "drupal/core-composer-scaffold": "9.0.*",
+        "drupal/core-project-message": "9.0.*",
+        "drupal/core-recommended": "9.0.*",
         "drupal/devel": "^4.0",
         "drupal/field_group": "^3.1",
         "drupal/paragraphs": "^1.12",
@@ -35,7 +35,13 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true
+        }
     },
     "extra": {
         "patches": {
